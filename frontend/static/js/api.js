@@ -2,7 +2,13 @@
  * Sanyukt ID — API Client
  * Centralized fetch wrapper for all API calls
  */
-const API_BASE = 'http://localhost:8000';
+// Automatically use relative URLs in production or same-origin local (e.g. Render, or localhost:8000),
+// and fallback to http://localhost:8000 only when served from a separate static server/file protocol.
+const API_BASE = (window.location.protocol === 'file:' || 
+  ((window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && 
+   window.location.port !== '8000' && window.location.port !== ''))
+  ? 'http://localhost:8000'
+  : '';
 
 const api = {
   async request(method, path, body = null, requiresAuth = true) {

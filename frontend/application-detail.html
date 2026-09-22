@@ -138,10 +138,12 @@ async function loadDetail() {
 
   try {
     const a = await api.get(`/api/applications/${appId}`);
-    const auditResp = await fetch(`http://localhost:8000/api/audit-logs?application_id=${appId}`, {
-      headers: { 'Authorization': `Bearer ${localStorage.getItem('sanyukt_token')}` }
-    });
-    const auditLogs = auditResp.ok ? await auditResp.json() : [];
+    let auditLogs = [];
+    try {
+      auditLogs = await api.get(`/api/audit-logs?application_id=${appId}`);
+    } catch (e) {
+      auditLogs = [];
+    }
 
     // Timeline icons
     const icons = { COMPLETED: '&#10003;', IN_PROGRESS: '&#9654;', FAILED: '&#10007;', PENDING: '&#9679;' };
