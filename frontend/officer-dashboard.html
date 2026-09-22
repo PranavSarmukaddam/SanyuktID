@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Officer Dashboard — Sanyukt ID | Government of Maharashtra</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<!-- Tricolor Top Accent -->
+<div class="gov-tricolor-bar"></div>
+
+<!-- Accessibility & Utility Bar -->
+<div class="top-utility-bar">
+  <div class="utility-container">
+    <div class="utility-left">
+      <span class="utility-item"><strong>महाराष्ट्र शासन</strong> | Government of Maharashtra — Administrative Officer Portal</span>
+      <span class="utility-item" style="color:#7D8C9B;">|</span>
+      <span class="utility-item"><span id="live-clock">Loading live time...</span></span>
+    </div>
+    <div class="utility-right">
+      <a href="#main-content" style="color:#495057;font-size:11px;">Skip to Main Content</a>
+      <span>|</span>
+      <button class="utility-btn" onclick="document.body.style.fontSize='13px'">A-</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='14px'">A</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='15px'">A+</button>
+      <span>|</span>
+      <a href="#" class="lang-badge">मराठी</a>
+      <a href="#" class="lang-badge active">English</a>
+    </div>
+  </div>
+</div>
+
+<!-- Main Branding Header -->
+<header class="main-header">
+  <div class="header-container">
+    <a href="/officer-dashboard.html" class="brand-group" style="text-decoration:none;">
+      <img src="/static/img/sanyukt.png" alt="Government of Maharashtra — Sanyukt ID" class="brand-logo-img">
+      <div class="brand-titles">
+        <div class="brand-marathi">महाराष्ट्र शासन &nbsp;|&nbsp; Govt. of Maharashtra</div>
+        <div class="brand-main">SANYUKT&middot;ID</div>
+        <div class="brand-sub">Unified Citizen Digital Platform</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="helpline-box">
+        <div class="helpline-label">Internal Support Desk</div>
+        <div class="helpline-num">022-2202-5000</div>
+      </div>
+      <div id="header-user-info" class="header-user-status"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Navigation Bar -->
+<nav class="main-nav">
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li><a href="/officer-dashboard.html">Officer Dashboard</a></li>
+      <li><a href="/officer-applications.html">All Applications</a></li>
+      <li><a href="/audit-logs.html">System Audit Logs</a></li>
+      <li><a href="/index.html" class="nav-officer-link">Citizen State Portal</a></li>
+    </ul>
+  </div>
+</nav>
+</header>
+
+
+<main class="page-wrapper" id="main-content">
+  <div class="breadcrumb">Officer Portal <span>&rsaquo;</span> Dashboard</div>
+  <div class="flex-between mb-16">
+    <div>
+      <div class="page-title" style="border:none;margin:0;padding:0;">Officer Dashboard</div>
+      <div class="text-small text-muted" id="officer-name-display"></div>
+    </div>
+    <div style="font-size:12px;color:#666;">Last refreshed: <span id="refresh-time"></span> &nbsp; <button class="btn btn-outline btn-sm" onclick="loadDashboard()">Refresh</button></div>
+  </div>
+
+  <div id="alert-box" class="alert alert-hidden"></div>
+
+  <!-- Stats -->
+  <div class="row mb-16">
+    <div class="col-4" style="flex:0 0 calc(16.666% - 14px)"><div class="stat-box"><span class="stat-num" id="stat-total">—</span><div class="stat-label">Total</div></div></div>
+    <div class="col-4" style="flex:0 0 calc(16.666% - 14px)"><div class="stat-box"><span class="stat-num" id="stat-pending">—</span><div class="stat-label">Submitted</div></div></div>
+    <div class="col-4" style="flex:0 0 calc(16.666% - 14px)"><div class="stat-box"><span class="stat-num" id="stat-inprogress">—</span><div class="stat-label">In Progress</div></div></div>
+    <div class="col-4" style="flex:0 0 calc(16.666% - 14px)"><div class="stat-box"><span class="stat-num" id="stat-hold">—</span><div class="stat-label">On Hold</div></div></div>
+    <div class="col-4" style="flex:0 0 calc(16.666% - 14px)"><div class="stat-box"><span class="stat-num" id="stat-completed">—</span><div class="stat-label">Completed</div></div></div>
+    <div class="col-4" style="flex:0 0 calc(16.666% - 14px)"><div class="stat-box"><span class="stat-num" id="stat-failed-int" style="color:#B42318;">—</span><div class="stat-label">Failed Integrations</div></div></div>
+  </div>
+
+  <div class="row">
+    <div class="col-8">
+      <!-- Department Activity -->
+      <div class="card">
+        <div class="card-header">Department API Activity</div>
+        <div class="card-body" style="padding:0;">
+          <table class="data-table" id="dept-activity">
+            <thead><tr><th>Department</th><th>Total API Calls</th><th>Health Status</th><th>Failure Mode</th><th>Action</th></tr></thead>
+            <tbody><tr><td colspan="5" class="loading" style="text-align:center;">Loading...</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Recent Applications -->
+      <div class="card">
+        <div class="card-header flex-between">
+          <span>Recent Applications</span>
+          <a href="/officer-applications.html" class="text-small">View All</a>
+        </div>
+        <div class="card-body" style="padding:0;">
+          <div id="recent-apps"><div class="loading">Loading...</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <!-- Integration Health -->
+      <div class="card">
+        <div class="card-header">Integration Health</div>
+        <div class="card-body">
+          <div id="health-panel"><div class="loading">Loading...</div></div>
+        </div>
+      </div>
+
+      <!-- Failure Simulation -->
+      <div class="card">
+        <div class="card-header">Failure Simulation</div>
+        <div class="card-body">
+          <p class="text-small text-muted" style="margin-bottom:12px;">Simulate a department API failure to demonstrate error handling and retry behaviour.</p>
+          <div id="failure-controls"><div class="loading">Loading...</div></div>
+        </div>
+      </div>
+
+      <!-- API Docs Link -->
+      <div class="card">
+        <div class="card-header">API Documentation</div>
+        <div class="card-body text-small">
+          <p><a href="http://localhost:8000/docs" target="_blank">Sanyukt Backend API Docs</a> (FastAPI Swagger)</p>
+          <p class="mt-8"><a href="http://localhost:8001/docs" target="_blank">Revenue Dept API</a></p>
+          <p class="mt-8"><a href="http://localhost:8002/docs" target="_blank">Municipal Dept API</a></p>
+          <p class="mt-8"><a href="http://localhost:8003/docs" target="_blank">Welfare Dept API</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h4>Government of Maharashtra</h4>
+      <ul>
+        <li><a href="/index.html">State Portal Home</a></li>
+        <li><a href="/services.html">Citizen Services Directory</a></li>
+        <li><a href="/applications.html">Track Application Status</a></li>
+        <li><a href="/officer-dashboard.html">Administrative Officer Portal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Citizen Services</h4>
+      <ul>
+        <li><a href="/apply.html?service=PROP_CERT">7/12 Land Records (e-Mahabhumi)</a></li>
+        <li><a href="/apply.html?service=PROP_TRANSFER">Online Ferfar & Property Transfer</a></li>
+        <li><a href="/apply.html?service=INCOME_CERT">Tahasildar Income Certificates</a></li>
+        <li><a href="/apply.html?service=BLDG_PERMISSION">Municipal BPAMS Clearances</a></li>
+        <li><a href="/apply.html?service=SCHOLARSHIP">MahaDBT Education Scholarships</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies & Support</h4>
+      <ul>
+        <li><a href="#">Citizen Charter & Service SLAs</a></li>
+        <li><a href="#">Privacy & Data Protection Policy</a></li>
+        <li><a href="#">Hyperlinking Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Grievance Redressal (Aaple Sarkar)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Helpline & Helpdesk</h4>
+      <p style="color:#FFF;font-weight:bold;font-size:15px;margin-bottom:4px;">1800-120-8040</p>
+      <p style="font-size:11px;color:#A0B3C6;margin-bottom:8px;">Toll-Free | 24 Hours x 7 Days Support</p>
+      <p style="font-size:11px;color:#A0B3C6;">Department of Information Technology,<br>Mantralaya, Mumbai - 400 032</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Government of Maharashtra. All rights reserved. Developed by <strong>Team ERRORISTS</strong>.</div>
+  </div>
+</footer>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/auth.js"></script>
+<script>
+async function loadDashboard() {
+  if (!auth.requireOfficer()) return;
+  document.getElementById('refresh-time').textContent = new Date().toLocaleTimeString('en-IN');
+
+  // Officer name
+  try {
+    const me = await api.get('/api/auth/me');
+    document.getElementById('officer-name-display').textContent = `${me.officer_name} | ${me.department} | ${me.designation}`;
+  } catch(e) {}
+
+  // Stats
+  try {
+    const stats = await api.get('/api/officer/stats');
+    document.getElementById('stat-total').textContent = stats.total;
+    document.getElementById('stat-pending').textContent = stats.pending;
+    document.getElementById('stat-inprogress').textContent = stats.in_progress;
+    document.getElementById('stat-hold').textContent = stats.on_hold;
+    document.getElementById('stat-completed').textContent = stats.completed;
+    document.getElementById('stat-failed-int').textContent = stats.failed_integrations;
+
+    // Department activity table
+    const activity = stats.department_activity;
+    const health = stats.department_health;
+    const tbody = document.querySelector('#dept-activity tbody');
+    tbody.innerHTML = health.map(d => `<tr>
+      <td>${d.name}</td>
+      <td>${activity[d.code] || 0}</td>
+      <td><span class="badge badge-${d.health.toLowerCase()}">${d.health}</span></td>
+      <td>${d.failure_mode ? '<span class="badge badge-failed">FAILURE ON</span>' : '<span class="badge badge-completed">Normal</span>'}</td>
+      <td>
+        ${d.failure_mode
+          ? `<button class="btn btn-success btn-sm" onclick="toggleFailure('${d.code}', false, this)">Disable Failure</button>`
+          : `<button class="btn btn-danger btn-sm" onclick="toggleFailure('${d.code}', true, this)">Simulate Failure</button>`}
+      </td>
+    </tr>`).join('');
+
+    // Health panel
+    document.getElementById('health-panel').innerHTML = health.map(d => `
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #E8EBEF;">
+        <div>
+          <div style="font-weight:bold;font-size:13px;">${d.name}</div>
+        </div>
+        <span class="badge badge-${d.health.toLowerCase()}">${d.health}</span>
+      </div>
+    `).join('');
+
+    // Failure controls
+    document.getElementById('failure-controls').innerHTML = health.map(d => `
+      <div style="margin-bottom:8px;padding:8px;border:1px solid #D9DDE2;border-radius:3px;">
+        <div style="font-weight:bold;font-size:12px;margin-bottom:6px;">${d.name}</div>
+        <div style="display:flex;gap:6px;">
+          <button class="btn btn-danger btn-sm" onclick="toggleFailure('${d.code}', true, this)" ${d.failure_mode ? 'disabled' : ''}>Enable Failure</button>
+          <button class="btn btn-success btn-sm" onclick="toggleFailure('${d.code}', false, this)" ${!d.failure_mode ? 'disabled' : ''}>Disable Failure</button>
+        </div>
+      </div>
+    `).join('');
+  } catch(e) {
+    showAlert('alert-box', 'Could not load stats: ' + e.message, 'error');
+  }
+
+  // Recent applications
+  try {
+    const apps = await api.get('/api/applications');
+    const el = document.getElementById('recent-apps');
+    const recent = apps.slice(0, 6);
+    el.innerHTML = `<table class="data-table">
+      <thead><tr><th>ID</th><th>Citizen</th><th>Service</th><th>Status</th><th>Date</th></tr></thead>
+      <tbody>${recent.map(a => `<tr>
+        <td><a href="/application-detail.html?id=${a.application_id}">${a.application_id}</a></td>
+        <td>${a.citizen_name}</td>
+        <td>${a.service}</td>
+        <td>${statusBadge(a.status)}</td>
+        <td>${fmtDate(a.created_at)}</td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+  } catch(e) {}
+}
+
+async function toggleFailure(deptCode, failureMode, btn) {
+  btn.disabled = true; btn.textContent = 'Updating...';
+  try {
+    const result = await api.post('/api/departments/failure-mode', { department_code: deptCode, failure_mode: failureMode });
+    showAlert('alert-box', result.message, failureMode ? 'warning' : 'success');
+    loadDashboard();
+  } catch(e) {
+    showAlert('alert-box', e.message, 'error');
+    btn.disabled = false;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadDashboard);
+</script>
+</body>
+</html>

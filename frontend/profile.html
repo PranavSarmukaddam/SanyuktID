@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile — Sanyukt ID | Government of Maharashtra</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<!-- Tricolor Top Accent -->
+<div class="gov-tricolor-bar"></div>
+
+<!-- Accessibility & Utility Bar -->
+<div class="top-utility-bar">
+  <div class="utility-container">
+    <div class="utility-left">
+      <span class="utility-item"><strong>महाराष्ट्र शासन</strong> | Government of Maharashtra</span>
+      <span class="utility-item" style="color:#7D8C9B;">|</span>
+      <span class="utility-item"><span id="live-clock">Loading live time...</span></span>
+    </div>
+    <div class="utility-right">
+      <a href="#main-content" style="color:#495057;font-size:11px;">Skip to Main Content</a>
+      <span>|</span>
+      <button class="utility-btn" onclick="document.body.style.fontSize='13px'">A-</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='14px'">A</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='15px'">A+</button>
+      <span>|</span>
+      <a href="#" class="lang-badge">मराठी</a>
+      <a href="#" class="lang-badge active">English</a>
+    </div>
+  </div>
+</div>
+
+<!-- Main Branding Header -->
+<header class="main-header">
+  <div class="header-container">
+    <a href="/index.html" class="brand-group" style="text-decoration:none;">
+      <img src="/static/img/sanyukt.png" alt="Government of Maharashtra — Sanyukt ID" class="brand-logo-img">
+      <div class="brand-titles">
+        <div class="brand-marathi">महाराष्ट्र शासन &nbsp;|&nbsp; Govt. of Maharashtra</div>
+        <div class="brand-main">SANYUKT&middot;ID</div>
+        <div class="brand-sub">Unified Citizen Digital Platform</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="helpline-box">
+        <div class="helpline-label">Toll-Free Citizen Helpline</div>
+        <div class="helpline-num">1800-120-8040</div>
+      </div>
+      <div id="header-user-info" class="header-user-status"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Navigation Bar -->
+<nav class="main-nav">
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/services.html">Citizen Services</a></li>
+      <li><a href="/applications.html">Track Applications</a></li>
+      <li><a href="/dashboard.html">Dashboard</a></li>
+      <li><a href="/consent.html">Consent</a></li>
+      <li><a href="/notifications.html">Notifications</a></li>
+      <li><a href="/profile.html">Profile</a></li>
+      <li><a href="/officer-dashboard.html" class="nav-officer-link">Officer Portal</a></li>
+    </ul>
+  </div>
+</nav>
+</header>
+
+
+<main class="page-wrapper" id="main-content">
+  <div class="breadcrumb"><a href="/index.html">Home</a> <span>&rsaquo;</span> Profile</div>
+  <div class="page-title">My Profile</div>
+  <div id="profile-content"><div class="loading">Loading profile...</div></div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h4>Government of Maharashtra</h4>
+      <ul>
+        <li><a href="/index.html">State Portal Home</a></li>
+        <li><a href="/services.html">Citizen Services Directory</a></li>
+        <li><a href="/applications.html">Track Application Status</a></li>
+        <li><a href="/officer-dashboard.html">Administrative Officer Portal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Citizen Services</h4>
+      <ul>
+        <li><a href="/apply.html?service=PROP_CERT">7/12 Land Records (e-Mahabhumi)</a></li>
+        <li><a href="/apply.html?service=PROP_TRANSFER">Online Ferfar & Property Transfer</a></li>
+        <li><a href="/apply.html?service=INCOME_CERT">Tahasildar Income Certificates</a></li>
+        <li><a href="/apply.html?service=BLDG_PERMISSION">Municipal BPAMS Clearances</a></li>
+        <li><a href="/apply.html?service=SCHOLARSHIP">MahaDBT Education Scholarships</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies & Support</h4>
+      <ul>
+        <li><a href="#">Citizen Charter & Service SLAs</a></li>
+        <li><a href="#">Privacy & Data Protection Policy</a></li>
+        <li><a href="#">Hyperlinking Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Grievance Redressal (Aaple Sarkar)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Helpline & Helpdesk</h4>
+      <p style="color:#FFF;font-weight:bold;font-size:15px;margin-bottom:4px;">1800-120-8040</p>
+      <p style="font-size:11px;color:#A0B3C6;margin-bottom:8px;">Toll-Free | 24 Hours x 7 Days Support</p>
+      <p style="font-size:11px;color:#A0B3C6;">Department of Information Technology,<br>Mantralaya, Mumbai - 400 032</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Government of Maharashtra. All rights reserved. Developed by <strong>Team ERRORISTS</strong>.</div>
+  </div>
+</footer>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/auth.js"></script>
+<script>
+async function loadProfile() {
+  if (!auth.requireCitizen()) return;
+  try {
+    const me = await api.get('/api/auth/me');
+    document.getElementById('profile-content').innerHTML = `
+      <div class="row">
+        <div class="col-4">
+          <div class="id-card">
+            <div class="id-card-header">
+              <div class="id-card-logo">S</div>
+              <div>
+                <div class="id-card-org">Government of Maharashtra</div>
+                <div class="id-card-title">Sanyukt ID Card</div>
+              </div>
+            </div>
+            <div class="id-field"><div class="id-field-label">Name</div><div class="id-field-value">${me.citizen_name}</div></div>
+            <div class="id-field"><div class="id-field-label">Sanyukt ID Number</div><div class="id-sanyukt-num">${me.sanyukt_id}</div></div>
+            <div class="id-field"><div class="id-field-label">District</div><div class="id-field-value">${me.district || '—'}</div></div>
+            <div class="id-field"><div class="id-field-label">Mobile</div><div class="id-field-value">${me.mobile}</div></div>
+            <div class="id-field"><div class="id-field-label">Aadhaar (Last 4)</div><div class="id-field-value">XXXX-XXXX-XXXX-${me.aadhaar_last4 || '????'}</div></div>
+            <div style="margin-top:10px;font-size:10px;color:#CBD5E1;border-top:1px solid rgba(255,255,255,0.2);padding-top:8px;">Verified Citizen Identity • Government of Maharashtra</div>
+          </div>
+        </div>
+        <div class="col-8">
+          <div class="card">
+            <div class="card-header">Personal Details</div>
+            <div class="card-body" style="padding:0;">
+              <table class="data-table">
+                <tr><td style="width:160px;"><strong>Full Name</strong></td><td>${me.citizen_name}</td></tr>
+                <tr><td><strong>Sanyukt ID</strong></td><td><strong style="color:#1F4E79;font-family:monospace;">${me.sanyukt_id}</strong></td></tr>
+                <tr><td><strong>Mobile</strong></td><td>${me.mobile}</td></tr>
+                <tr><td><strong>Email</strong></td><td>${me.email || '—'}</td></tr>
+                <tr><td><strong>Date of Birth</strong></td><td>${me.dob || '—'}</td></tr>
+                <tr><td><strong>Gender</strong></td><td>${me.gender || '—'}</td></tr>
+                <tr><td><strong>District</strong></td><td>${me.district || '—'}</td></tr>
+                <tr><td><strong>Address</strong></td><td>${me.address || '—'}</td></tr>
+                <tr><td><strong>Aadhaar (Last 4)</strong></td><td>XXXX-XXXX-XXXX-${me.aadhaar_last4 || '????'}</td></tr>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">Account Information</div>
+            <div class="card-body text-small">
+              <p>Login ID (Mobile): ${me.username}</p>
+              <p class="mt-8">Role: <span class="badge badge-info" style="background:#E3F2FD;color:#1558A0;">Citizen</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  } catch(e) {
+    document.getElementById('profile-content').innerHTML = `<div class="alert alert-error">${e.message}</div>`;
+  }
+}
+document.addEventListener('DOMContentLoaded', loadProfile);
+</script>
+</body>
+</html>

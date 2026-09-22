@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Detail — Sanyukt ID | Government of Maharashtra</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="gov-tricolor-bar"></div>
+
+<div class="top-utility-bar">
+  <div class="utility-container">
+    <div class="utility-left">
+      <span class="utility-item"><strong>महाराष्ट्र शासन</strong> | Government of Maharashtra</span>
+      <span class="utility-item" style="color:#7D8C9B;">|</span>
+      <span class="utility-item"><span id="live-clock">Loading live time...</span></span>
+    </div>
+    <div class="utility-right">
+      <a href="#main-content" style="color:#495057;font-size:11px;">Skip to Main Content</a>
+      <span>|</span>
+      <button class="utility-btn" onclick="document.body.style.fontSize='13px'">A-</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='14px'">A</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='15px'">A+</button>
+      <span>|</span>
+      <a href="#" class="lang-badge">मराठी</a>
+      <a href="#" class="lang-badge active">English</a>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="header-container">
+    <a href="/index.html" class="brand-group" style="text-decoration:none;">
+      <img src="/static/img/sanyukt.png" alt="Government of Maharashtra — Sanyukt ID" class="brand-logo-img">
+      <div class="brand-titles">
+        <div class="brand-marathi">महाराष्ट्र शासन &nbsp;|&nbsp; Govt. of Maharashtra</div>
+        <div class="brand-main">SANYUKT&middot;ID</div>
+        <div class="brand-sub">Unified Citizen Digital Platform</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="helpline-box">
+        <div class="helpline-label">Toll-Free Citizen Helpline</div>
+        <div class="helpline-num">1800-120-8040</div>
+      </div>
+      <div id="header-user-info" class="header-user-status"></div>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="nav-container">
+    <ul class="nav-links" id="site-nav-bar">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/services.html">Citizen Services</a></li>
+      <li><a href="/applications.html" class="active">My Applications</a></li>
+      <li><a href="/dashboard.html">My Dashboard</a></li>
+      <li><a href="/consent.html">Consent Management</a></li>
+      <li><a href="/notifications.html">Notifications</a></li>
+      <li><a href="/profile.html">Profile</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="page-wrapper" id="main-content">
+  <div class="breadcrumb" id="breadcrumb-bar"><a href="/index.html">Home</a> <span>&rsaquo;</span> <a href="/applications.html">My Applications</a> <span>&rsaquo;</span> Details</div>
+  <div id="alert-box" class="alert alert-hidden"></div>
+  <div id="page-content"><div style="padding:40px;text-align:center;color:var(--text-muted);">Loading application details...</div></div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h4>Government of Maharashtra</h4>
+      <ul>
+        <li><a href="/index.html">State Portal Home</a></li>
+        <li><a href="/services.html">Citizen Services Directory</a></li>
+        <li><a href="/applications.html">Track Application Status</a></li>
+        <li><a href="/officer-dashboard.html">Administrative Officer Portal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Citizen Services</h4>
+      <ul>
+        <li><a href="/apply.html?service=PROP_CERT">7/12 Land Records (e-Mahabhumi)</a></li>
+        <li><a href="/apply.html?service=PROP_TRANSFER">Online Ferfar & Property Transfer</a></li>
+        <li><a href="/apply.html?service=INCOME_CERT">Tahasildar Income Certificates</a></li>
+        <li><a href="/apply.html?service=BLDG_PERMISSION">Municipal BPAMS Clearances</a></li>
+        <li><a href="/apply.html?service=SCHOLARSHIP">MahaDBT Education Scholarships</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies & Support</h4>
+      <ul>
+        <li><a href="#">Citizen Charter & Service SLAs</a></li>
+        <li><a href="#">Privacy & Data Protection Policy</a></li>
+        <li><a href="#">Hyperlinking Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Grievance Redressal (Aaple Sarkar)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Helpline & Helpdesk</h4>
+      <p style="color:#FFF;font-weight:bold;font-size:15px;margin-bottom:4px;">1800-120-8040</p>
+      <p style="font-size:11px;color:#A0B3C6;margin-bottom:8px;">Toll-Free | 24 Hours x 7 Days Support</p>
+      <p style="font-size:11px;color:#A0B3C6;">Department of Information Technology,<br>Mantralaya, Mumbai - 400 032</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Government of Maharashtra. All rights reserved. Developed by <strong>Team ERRORISTS</strong>.</div>
+  </div>
+</footer>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/auth.js"></script>
+<script>
+async function loadDetail() {
+  if (!auth.requireLogin()) return;
+
+  const isOfficer = auth.getRole() === 'officer';
+  if (isOfficer) {
+    document.getElementById('site-nav-bar').innerHTML = `
+      <a href="/officer-dashboard.html">Dashboard</a>
+      <a href="/officer-applications.html" class="active">All Applications</a>
+      <a href="/audit-logs.html">Audit Logs</a>
+    `;
+    document.getElementById('breadcrumb-bar').innerHTML = `
+      <a href="/officer-dashboard.html">Officer Portal</a> <span>&rsaquo;</span> 
+      <a href="/officer-applications.html">All Applications</a> <span>&rsaquo;</span> Details
+    `;
+  }
+
+  const params = new URLSearchParams(window.location.search);
+  const appId = params.get('id');
+  if (!appId) { document.getElementById('page-content').innerHTML = '<div class="alert alert-error">No application ID provided.</div>'; return; }
+
+  try {
+    const a = await api.get(`/api/applications/${appId}`);
+    const auditResp = await fetch(`http://localhost:8000/api/audit-logs?application_id=${appId}`, {
+      headers: { 'Authorization': `Bearer ${localStorage.getItem('sanyukt_token')}` }
+    });
+    const auditLogs = auditResp.ok ? await auditResp.json() : [];
+
+    // Timeline icons
+    const icons = { COMPLETED: '&#10003;', IN_PROGRESS: '&#9654;', FAILED: '&#10007;', PENDING: '&#9679;' };
+
+    // Steps timeline
+    const stepsHtml = a.steps.map(s => {
+      const icon = icons[s.status] || '&#9679;';
+      const resultStr = s.result_data && Object.keys(s.result_data).length
+        ? Object.entries(s.result_data).map(([k, v]) => `<strong>${k}:</strong> ${v}`).join(' &nbsp;|&nbsp; ')
+        : '';
+      return `<li class="timeline-item">
+        <div class="timeline-icon ${s.status.toLowerCase()}">${icon}</div>
+        <div class="timeline-content">
+          <div class="timeline-step-name">Step ${s.step_number}: ${s.step_name}</div>
+          <div class="timeline-dept">Department: ${s.department} &nbsp; ${statusBadge(s.status)}</div>
+          ${s.started_at ? `<div class="timeline-time">Started: ${fmtDate(s.started_at)}</div>` : ''}
+          ${s.completed_at ? `<div class="timeline-time">Completed: ${fmtDate(s.completed_at)}</div>` : ''}
+          ${resultStr ? `<div class="timeline-result">${resultStr}</div>` : ''}
+          ${s.error_message ? `<div class="timeline-error">&#9888; ${s.error_message}</div>` : ''}
+          ${s.retry_count > 0 ? `<div class="text-small text-muted">Retries: ${s.retry_count}</div>` : ''}
+        </div>
+      </li>`;
+    }).join('');
+
+    // Form data
+    const formFields = Object.entries(a.form_data || {}).map(([k, v]) => `<tr><td><strong>${k}</strong></td><td>${v}</td></tr>`).join('');
+
+    // Audit logs for this app
+    const auditHtml = auditLogs.length ? auditLogs.map(l => `
+      <tr>
+        <td>${fmtDate(l.timestamp)}</td>
+        <td>${l.user_identifier}</td>
+        <td>${l.system}</td>
+        <td>${l.action}</td>
+        <td>${statusBadge(l.status)}</td>
+      </tr>`).join('') : '<tr><td colspan="5" class="text-muted" style="padding:12px;">No audit logs for this application.</td></tr>';
+
+    const canProcess = ['SUBMITTED','ON_HOLD'].includes(a.status);
+    const processBtn = canProcess ? `<button class="btn btn-primary" onclick="processApp('${appId}', this)">Process via Sanyukt</button>` : '';
+    const backUrl = isOfficer ? '/officer-applications.html' : '/applications.html';
+    const backText = isOfficer ? 'Back to All Applications' : 'Back to My Applications';
+
+    document.title = `${appId} — Sanyukt ID`;
+    document.getElementById('page-content').innerHTML = `
+      <div class="flex-between mb-16">
+        <div class="page-title" style="border:none;margin:0;padding:0;">Application: ${appId}</div>
+        <div style="display:flex;gap:8px;">
+          ${processBtn}
+          <a href="${backUrl}" class="btn btn-secondary">${backText}</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-8">
+          <!-- Application Info -->
+          <div class="card">
+            <div class="card-header">Application Information</div>
+            <div class="card-body" style="padding:0;">
+              <table class="data-table">
+                <tr><td><strong>Application ID</strong></td><td>${a.application_id}</td><td><strong>Status</strong></td><td>${statusBadge(a.status)}</td></tr>
+                <tr><td><strong>Service</strong></td><td>${a.service}</td><td><strong>Department</strong></td><td>${a.department}</td></tr>
+                <tr><td><strong>Citizen Name</strong></td><td>${a.citizen_name}</td><td><strong>Sanyukt ID</strong></td><td>${a.sanyukt_id}</td></tr>
+                <tr><td><strong>District</strong></td><td>${a.district}</td><td><strong>Mobile</strong></td><td>${a.citizen_mobile}</td></tr>
+                <tr><td><strong>Submitted On</strong></td><td>${fmtDate(a.created_at)}</td><td><strong>Last Updated</strong></td><td>${fmtDate(a.updated_at)}</td></tr>
+              </table>
+            </div>
+          </div>
+
+          ${formFields ? `
+          <div class="card">
+            <div class="card-header">Application Form Data</div>
+            <div class="card-body" style="padding:0;">
+              <table class="data-table">${formFields}</table>
+            </div>
+          </div>` : ''}
+
+          <!-- Unified Workflow Timeline -->
+          <div class="card">
+            <div class="card-header">Unified Processing Timeline</div>
+            <div class="card-body">
+              <ul class="timeline">${stepsHtml}</ul>
+            </div>
+          </div>
+
+          <!-- Audit Logs -->
+          <div class="card">
+            <div class="card-header">Audit Log</div>
+            <div class="card-body" style="padding:0;">
+              <table class="data-table">
+                <thead><tr><th>Timestamp</th><th>User/System</th><th>System</th><th>Action</th><th>Status</th></tr></thead>
+                <tbody>${auditHtml}</tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <!-- Consents -->
+          <div class="card">
+            <div class="card-header">Consent Status</div>
+            <div class="card-body">
+              ${a.consents.length ? a.consents.map(c => `
+                <div style="padding:8px 0;border-bottom:1px solid #E8EBEF;">
+                  <div style="font-weight:bold;font-size:13px;">${c.department}</div>
+                  <div class="text-small">Data: ${c.data_types}</div>
+                  <div>${c.granted ? '<span class="badge badge-completed">Granted</span>' : '<span class="badge badge-failed">Revoked</span>'}</div>
+                </div>
+              `).join('') : '<div class="text-small text-muted">No consent records.</div>'}
+            </div>
+          </div>
+
+          <!-- Status Summary -->
+          <div class="card">
+            <div class="card-header">Progress Summary</div>
+            <div class="card-body">
+              ${(() => {
+                const total = a.steps.length;
+                const done = a.steps.filter(s => s.status === 'COMPLETED').length;
+                const pct = total ? Math.round((done/total)*100) : 0;
+                return `
+                  <div style="margin-bottom:8px;font-size:13px;">${done} of ${total} steps completed</div>
+                  <div style="background:#D9DDE2;border-radius:2px;height:12px;">
+                    <div style="background:#287A3E;height:12px;width:${pct}%;border-radius:2px;"></div>
+                  </div>
+                  <div class="text-small text-muted mt-8">${pct}% complete</div>
+                `;
+              })()}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  } catch(e) {
+    document.getElementById('page-content').innerHTML = `<div class="alert alert-error">${e.message}</div>`;
+  }
+}
+
+async function processApp(appId, btn) {
+  btn.disabled = true; btn.textContent = 'Processing...';
+  try {
+    const result = await api.post(`/api/interoperability/process/${appId}`, {});
+    showAlert('alert-box', result.message || 'Processing initiated.', result.status === 'COMPLETED' ? 'success' : 'info');
+    setTimeout(() => loadDetail(), 1000);
+  } catch(e) {
+    showAlert('alert-box', e.message || 'Processing failed. The department system may be unavailable.', 'error');
+    setTimeout(() => loadDetail(), 1000);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadDetail);
+</script>
+</body>
+</html>

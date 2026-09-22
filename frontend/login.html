@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Authentication | Government of Maharashtra — Sanyukt ID</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    .login-container {
+      max-width: 460px;
+      margin: 30px auto;
+    }
+    .login-tabs {
+      display: flex;
+      border-bottom: 2px solid var(--primary-navy);
+    }
+    .login-tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px;
+      background: #E8EEF5;
+      font-weight: 700;
+      font-size: 13px;
+      color: #334155;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      border-bottom: none;
+      border-radius: 4px 4px 0 0;
+    }
+    .login-tab.active {
+      background: var(--primary-navy);
+      color: #FFFFFF;
+      border-color: var(--primary-navy);
+    }
+  </style>
+</head>
+<body>
+
+<div class="gov-tricolor-bar"></div>
+
+<div class="top-utility-bar">
+  <div class="utility-container">
+    <div class="utility-left">
+      <span class="utility-item"><strong>महाराष्ट्र शासन</strong> | Government of Maharashtra</span>
+      <span class="utility-item" style="color:#7D8C9B;">|</span>
+      <span class="utility-item"><span id="live-clock">Loading live time...</span></span>
+    </div>
+    <div class="utility-right">
+      <a href="#main-content" style="color:#495057;font-size:11px;">Skip to Main Content</a>
+      <span>|</span>
+      <button class="utility-btn" onclick="document.body.style.fontSize='13px'">A-</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='14px'">A</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='15px'">A+</button>
+      <span>|</span>
+      <a href="#" class="lang-badge">मराठी</a>
+      <a href="#" class="lang-badge active">English</a>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="header-container">
+    <a href="/index.html" class="brand-group" style="text-decoration:none;">
+      <img src="/static/img/sanyukt.png" alt="Government of Maharashtra — Sanyukt ID" class="brand-logo-img">
+      <div class="brand-titles">
+        <div class="brand-marathi">महाराष्ट्र शासन &nbsp;|&nbsp; Govt. of Maharashtra</div>
+        <div class="brand-main">SANYUKT&middot;ID</div>
+        <div class="brand-sub">Unified Citizen Digital Platform</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="helpline-box">
+        <div class="helpline-label">Toll-Free Citizen Helpline</div>
+        <div class="helpline-num">1800-120-8040</div>
+      </div>
+      <div id="header-user-info" class="header-user-status"></div>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/services.html">Citizen Services</a></li>
+      <li><a href="/applications.html">Track Application</a></li>
+      <li><a href="/login.html" class="active">Login</a></li>
+      <li><a href="/register.html">Register</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="page-wrapper" id="main-content">
+  <div class="breadcrumb"><a href="/index.html">Home</a> <span>&rsaquo;</span> Portal Authentication</div>
+
+  <div class="login-container">
+    <div class="page-title" style="text-align:center;margin-bottom:12px;">Portal Login</div>
+    <div style="text-align:center;font-size:12px;color:var(--text-muted);margin-bottom:18px;">Single-Window Access for Citizens and Departmental Officers</div>
+
+    <div id="alert-box" class="alert alert-hidden"></div>
+
+    <div class="login-tabs">
+      <div class="login-tab active" id="tab-citizen" onclick="switchTab('citizen')">Citizen Access</div>
+      <div class="login-tab" id="tab-officer" onclick="switchTab('officer')">Department Officer</div>
+    </div>
+
+    <div class="gov-card" style="border-top:none;border-radius:0 0 4px 4px;">
+      <div class="gov-card-body" style="padding:24px 20px;">
+        <form id="login-form" onsubmit="doLogin(event)">
+          <div class="form-group">
+            <label for="username" class="form-label" id="username-label">Registered Mobile Number</label>
+            <input type="text" id="username" class="form-control" placeholder="Enter 10-digit mobile number" required autocomplete="username">
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" class="form-control" placeholder="Enter account password" required autocomplete="current-password">
+          </div>
+          <div class="form-group" style="margin-top:20px;">
+            <button type="submit" class="btn btn-primary" id="login-btn" style="width:100%;padding:10px;">Sign In to Portal</button>
+          </div>
+        </form>
+        <div style="text-align:center;font-size:12px;color:#556677;margin-top:16px;">
+          Don't have a Sanyukt ID yet? <a href="/register.html" style="font-weight:700;">Register Here</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Credentials Helper -->
+    <div class="gov-card mt-16">
+      <div class="gov-card-header" style="font-size:13px;">Quick Access Credentials</div>
+      <div class="gov-card-body text-small">
+        <div class="row">
+          <div class="col-6">
+            <strong>Citizen Account:</strong><br>
+            Mobile: 9876543210<br>
+            Password: citizen123
+          </div>
+          <div class="col-6">
+            <strong>Officer Account:</strong><br>
+            ID: OFFICER001<br>
+            Password: officer123
+          </div>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:8px;">
+          <button class="btn btn-outline btn-sm" onclick="fillQuick('citizen')">Fill Citizen</button>
+          <button class="btn btn-secondary btn-sm" onclick="fillQuick('officer')">Fill Officer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h4>Government of Maharashtra</h4>
+      <ul>
+        <li><a href="/index.html">State Portal Home</a></li>
+        <li><a href="/services.html">Citizen Services Directory</a></li>
+        <li><a href="/applications.html">Track Application Status</a></li>
+        <li><a href="/officer-dashboard.html">Administrative Officer Portal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Citizen Services</h4>
+      <ul>
+        <li><a href="/apply.html?service=PROP_CERT">7/12 Land Records (e-Mahabhumi)</a></li>
+        <li><a href="/apply.html?service=PROP_TRANSFER">Online Ferfar & Property Transfer</a></li>
+        <li><a href="/apply.html?service=INCOME_CERT">Tahasildar Income Certificates</a></li>
+        <li><a href="/apply.html?service=BLDG_PERMISSION">Municipal BPAMS Clearances</a></li>
+        <li><a href="/apply.html?service=SCHOLARSHIP">MahaDBT Education Scholarships</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies & Support</h4>
+      <ul>
+        <li><a href="#">Citizen Charter & Service SLAs</a></li>
+        <li><a href="#">Privacy & Data Protection Policy</a></li>
+        <li><a href="#">Hyperlinking Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Grievance Redressal (Aaple Sarkar)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Helpline & Helpdesk</h4>
+      <p style="color:#FFF;font-weight:bold;font-size:15px;margin-bottom:4px;">1800-120-8040</p>
+      <p style="font-size:11px;color:#A0B3C6;margin-bottom:8px;">Toll-Free | 24 Hours x 7 Days Support</p>
+      <p style="font-size:11px;color:#A0B3C6;">Department of Information Technology,<br>Mantralaya, Mumbai - 400 032</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Government of Maharashtra. All rights reserved. Developed by <strong>Team ERRORISTS</strong>.</div>
+  </div>
+</footer>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/auth.js"></script>
+<script>
+let currentTab = 'citizen';
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.getElementById('tab-citizen').classList.toggle('active', tab === 'citizen');
+  document.getElementById('tab-officer').classList.toggle('active', tab === 'officer');
+  const label = document.getElementById('username-label');
+  const input = document.getElementById('username');
+  if (tab === 'officer') {
+    label.textContent = 'Government Officer ID';
+    input.placeholder = 'Enter Officer ID (e.g. OFFICER001)';
+  } else {
+    label.textContent = 'Registered Mobile Number';
+    input.placeholder = 'Enter 10-digit mobile number';
+  }
+}
+
+function fillQuick(type) {
+  if (type === 'officer') {
+    switchTab('officer');
+    document.getElementById('username').value = 'OFFICER001';
+    document.getElementById('password').value = 'officer123';
+  } else {
+    switchTab('citizen');
+    document.getElementById('username').value = '9876543210';
+    document.getElementById('password').value = 'citizen123';
+  }
+}
+
+async function doLogin(e) {
+  e.preventDefault();
+  const username = document.getElementById('username').value.trim();
+  const password = document.getElementById('password').value;
+  const btn = document.getElementById('login-btn');
+  btn.disabled = true;
+  btn.textContent = 'Verifying Credentials...';
+
+  try {
+    const data = await api.post('/api/auth/login', { username, password }, false);
+    auth.login(data);
+    if (data.role === 'officer') {
+      window.location.href = '/officer-dashboard.html';
+    } else {
+      window.location.href = '/dashboard.html';
+    }
+  } catch (err) {
+    showAlert('alert-box', err.message || 'Login failed. Please verify credentials.', 'error');
+    btn.disabled = false;
+    btn.textContent = 'Sign In to Portal';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const p = new URLSearchParams(window.location.search);
+  if (p.get('role') === 'officer') switchTab('officer');
+});
+</script>
+</body>
+</html>

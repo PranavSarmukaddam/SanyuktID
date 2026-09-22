@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 64" width="260" height="64" fill="none">
+  <!-- Sanyukt ID Official Maharashtra Seal -->
+  <g transform="translate(4, 4)">
+    <!-- Outer Glow & Dropshadow Ring -->
+    <circle cx="28" cy="28" r="28" fill="#0C3866" />
+    <circle cx="28" cy="28" r="27" stroke="#D97706" stroke-width="1.5" />
+    <circle cx="28" cy="28" r="24.5" stroke="#F59E0B" stroke-width="0.75" stroke-dasharray="2 1.5" />
+    <circle cx="28" cy="28" r="22" fill="#072545" stroke="#D97706" stroke-width="1" />
+
+    <!-- 16 Sunburst/Ashoka Ray Accents -->
+    <g stroke="#F59E0B" stroke-width="1" opacity="0.6">
+      <line x1="28" y1="7" x2="28" y2="10" />
+      <line x1="28" y1="46" x2="28" y2="49" />
+      <line x1="7" y1="28" x2="10" y2="28" />
+      <line x1="46" y1="28" x2="49" y2="28" />
+      <line x1="13" y1="13" x2="15" y2="15" />
+      <line x1="41" y1="41" x2="43" y2="43" />
+      <line x1="13" y1="43" x2="15" y2="41" />
+      <line x1="41" y1="15" x2="43" y2="13" />
+    </g>
+
+    <!-- Central Sanyukt Unified Identity Emblem (Interlocked Shield + Infinity 'S') -->
+    <path d="M 28 13 
+             C 36 13, 40 18, 40 23 
+             C 40 28, 33 30, 28 32 
+             C 22 34, 16 36, 16 41 
+             C 16 47, 22 51, 28 51
+             C 33 51, 38 48, 40 45" 
+          stroke="#F59E0B" stroke-width="3" stroke-linecap="round" fill="none" />
+
+    <!-- Overlapping Security Loop (Completing the Knot of Unification) -->
+    <path d="M 28 51 
+             C 20 51, 16 46, 16 41 
+             C 16 36, 23 34, 28 32 
+             C 34 30, 40 28, 40 23 
+             C 40 17, 34 13, 28 13
+             C 23 13, 18 16, 16 19" 
+          stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.9" fill="none" />
+
+    <!-- Center Core Connection Node (Aadhaar/Interoperability Hub) -->
+    <circle cx="28" cy="32" r="3" fill="#FF9933" />
+    <circle cx="28" cy="32" r="1.5" fill="#FFFFFF" />
+
+    <!-- Maharashtra 4 Corner Stars -->
+    <polygon points="28,15 28.8,17 31,17 29.2,18.5 29.8,20.5 28,19.2 26.2,20.5 26.8,18.5 25,17 27.2,17" fill="#F59E0B" transform="scale(0.55) translate(23, 2)"/>
+    <polygon points="28,15 28.8,17 31,17 29.2,18.5 29.8,20.5 28,19.2 26.2,20.5 26.8,18.5 25,17 27.2,17" fill="#F59E0B" transform="scale(0.55) translate(23, 68)"/>
+  </g>
+
+  <!-- Typography Brand Group -->
+  <g transform="translate(70, 0)">
+    <!-- Maharashtra Govt Devanagari Title -->
+    <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#991B1B" letter-spacing="0.3">
+      महाराष्ट्र शासन
+    </text>
+    <text x="74" y="16" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#4B5563">
+      | Govt. of Maharashtra
+    </text>
+
+    <!-- Main SANYUKT ID Title -->
+    <text x="0" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="900" fill="#0C3866" letter-spacing="-0.5">
+      SANYUKT<tspan fill="#D97706" font-weight="800">·</tspan><tspan fill="#0C3866">ID</tspan>
+    </text>
+
+    <!-- Tricolor Bar Indicator -->
+    <rect x="0" y="44" width="38" height="2" fill="#FF9933" />
+    <rect x="38" y="44" width="38" height="2" fill="#CBD5E1" />
+    <rect x="76" y="44" width="38" height="2" fill="#138808" />
+
+    <!-- Subtitle Description -->
+    <text x="0" y="57" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="600" fill="#64748B" letter-spacing="0.4" text-transform="uppercase">
+      Unified Citizen Digital Platform
+    </text>
+  </g>
+</svg>

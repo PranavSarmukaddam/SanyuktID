@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Dashboard | Government of Maharashtra — Sanyukt ID</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="gov-tricolor-bar"></div>
+
+<div class="top-utility-bar">
+  <div class="utility-container">
+    <div class="utility-left">
+      <span class="utility-item"><strong>महाराष्ट्र शासन</strong> | Government of Maharashtra</span>
+      <span class="utility-item" style="color:#7D8C9B;">|</span>
+      <span class="utility-item"><span id="live-clock">Loading live time...</span></span>
+    </div>
+    <div class="utility-right">
+      <a href="#main-content" style="color:#495057;font-size:11px;">Skip to Main Content</a>
+      <span>|</span>
+      <button class="utility-btn" onclick="document.body.style.fontSize='13px'">A-</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='14px'">A</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='15px'">A+</button>
+      <span>|</span>
+      <a href="#" class="lang-badge">मराठी</a>
+      <a href="#" class="lang-badge active">English</a>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="header-container">
+    <a href="/index.html" class="brand-group" style="text-decoration:none;">
+      <img src="/static/img/sanyukt.png" alt="Government of Maharashtra — Sanyukt ID" class="brand-logo-img">
+      <div class="brand-titles">
+        <div class="brand-marathi">महाराष्ट्र शासन &nbsp;|&nbsp; Govt. of Maharashtra</div>
+        <div class="brand-main">SANYUKT&middot;ID</div>
+        <div class="brand-sub">Unified Citizen Digital Platform</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="helpline-box">
+        <div class="helpline-label">Toll-Free Citizen Helpline</div>
+        <div class="helpline-num">1800-120-8040</div>
+      </div>
+      <div id="header-user-info" class="header-user-status"></div>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/services.html">Citizen Services</a></li>
+      <li><a href="/applications.html">My Applications</a></li>
+      <li><a href="/dashboard.html" class="active">My Dashboard</a></li>
+      <li><a href="/consent.html">Consent Management</a></li>
+      <li><a href="/notifications.html">Notifications</a></li>
+      <li><a href="/profile.html">Citizen Profile</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="page-wrapper" id="main-content">
+  <div class="breadcrumb"><a href="/index.html">Home</a> <span>&rsaquo;</span> Citizen Dashboard</div>
+
+  <div class="flex-between mb-16">
+    <div>
+      <h1 class="page-title" id="welcome-title">Welcome to Citizen Dashboard</h1>
+      <div class="text-small text-muted" id="sanyukt-id-display">Verified Single-Window Digital Identity</div>
+    </div>
+    <div>
+      <a href="/services.html" class="btn btn-primary">Apply for a New Service</a>
+    </div>
+  </div>
+
+  <!-- Stats Strip -->
+  <div class="stats-counter-strip">
+    <div class="stat-counter-card">
+      <div class="stat-counter-number" id="stat-active">-</div>
+      <div class="stat-counter-label">Active Applications</div>
+    </div>
+    <div class="stat-counter-card">
+      <div class="stat-counter-number" id="stat-completed">-</div>
+      <div class="stat-counter-label">Completed Services</div>
+    </div>
+    <div class="stat-counter-card">
+      <div class="stat-counter-number" id="stat-notifs">-</div>
+      <div class="stat-counter-label">Unread Notifications</div>
+    </div>
+  </div>
+
+  <!-- Sanyukt ID Card + Applications/Notifs Row -->
+  <div class="row">
+    <div class="col-4">
+      <!-- Digital Sanyukt ID Smart Card -->
+      <div class="sanyukt-card-box mb-16">
+        <div class="sanyukt-card-header">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:32px;height:32px;border-radius:50%;background:#FFB300;color:#0C3866;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:14px;">M</div>
+            <div>
+              <div style="font-size:9px;text-transform:uppercase;color:#C9DCF0;">Government of Maharashtra</div>
+              <div style="font-size:12px;font-weight:700;">Sanyukt Citizen ID</div>
+            </div>
+          </div>
+          <span style="font-size:10px;background:rgba(255,255,255,0.15);padding:2px 6px;border-radius:2px;">Digital Smart Card</span>
+        </div>
+
+        <div style="font-size:10px;text-transform:uppercase;color:#B4D0EC;margin-bottom:2px;">Citizen Permanent Identifier</div>
+        <div class="sanyukt-card-id" id="card-sanyukt-id">-</div>
+
+        <div class="sanyukt-card-fields">
+          <div>
+            <div style="font-size:10px;color:#A9C9E8;">Full Name</div>
+            <div style="font-weight:700;" id="card-name">-</div>
+          </div>
+          <div>
+            <div style="font-size:10px;color:#A9C9E8;">District</div>
+            <div style="font-weight:700;" id="card-district">-</div>
+          </div>
+          <div>
+            <div style="font-size:10px;color:#A9C9E8;">Aadhaar Linked (Last 4)</div>
+            <div style="font-weight:700;" id="card-aadhaar">XXXX</div>
+          </div>
+          <div>
+            <div style="font-size:10px;color:#A9C9E8;">Status</div>
+            <div style="font-weight:700;color:#81C784;">Active / Verified</div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px;border-top:1px solid rgba(255,255,255,0.15);padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#C3D8ED;">
+          <span>Single-Window Authentication Standard</span>
+          <a href="/profile.html" style="color:#FFD54F;font-weight:600;">View Profile &rarr;</a>
+        </div>
+      </div>
+
+      <!-- Quick Links Card -->
+      <div class="gov-card">
+        <div class="gov-card-header">
+          <span>Quick Actions</span>
+        </div>
+        <div class="gov-card-body" style="display:flex;flex-direction:column;gap:8px;">
+          <a href="/services.html" class="btn btn-outline btn-sm">Explore 24+ Citizen Services</a>
+          <a href="/applications.html" class="btn btn-outline btn-sm">View All My Applications</a>
+          <a href="/consent.html" class="btn btn-outline btn-sm">Manage Department Consents</a>
+          <a href="/notifications.html" class="btn btn-outline btn-sm">Notification Inbox</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-8">
+      <!-- Recent Applications -->
+      <div class="gov-card mb-16">
+        <div class="gov-card-header flex-between">
+          <span>Recent Service Applications</span>
+          <a href="/applications.html" class="text-small">View All &rarr;</a>
+        </div>
+        <div class="gov-card-body" style="padding:0;">
+          <div id="recent-apps"><div style="padding:20px;text-align:center;color:var(--text-muted);">Loading recent applications...</div></div>
+        </div>
+      </div>
+
+      <!-- Recent Notifications -->
+      <div class="gov-card">
+        <div class="gov-card-header flex-between">
+          <span>Recent Alerts & Updates</span>
+          <a href="/notifications.html" class="text-small">View All &rarr;</a>
+        </div>
+        <div class="gov-card-body" style="padding:0;">
+          <div id="recent-notifs"><div style="padding:20px;text-align:center;color:var(--text-muted);">Loading notifications...</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h4>Government of Maharashtra</h4>
+      <ul>
+        <li><a href="/index.html">State Portal Home</a></li>
+        <li><a href="/services.html">Citizen Services Directory</a></li>
+        <li><a href="/applications.html">Track Application Status</a></li>
+        <li><a href="/officer-dashboard.html">Administrative Officer Portal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Citizen Services</h4>
+      <ul>
+        <li><a href="/apply.html?service=PROP_CERT">7/12 Land Records (e-Mahabhumi)</a></li>
+        <li><a href="/apply.html?service=PROP_TRANSFER">Online Ferfar & Property Transfer</a></li>
+        <li><a href="/apply.html?service=INCOME_CERT">Tahasildar Income Certificates</a></li>
+        <li><a href="/apply.html?service=BLDG_PERMISSION">Municipal BPAMS Clearances</a></li>
+        <li><a href="/apply.html?service=SCHOLARSHIP">MahaDBT Education Scholarships</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies & Support</h4>
+      <ul>
+        <li><a href="#">Citizen Charter & Service SLAs</a></li>
+        <li><a href="#">Privacy & Data Protection Policy</a></li>
+        <li><a href="#">Hyperlinking Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Grievance Redressal (Aaple Sarkar)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Helpline & Helpdesk</h4>
+      <p style="color:#FFF;font-weight:bold;font-size:15px;margin-bottom:4px;">1800-120-8040</p>
+      <p style="font-size:11px;color:#A0B3C6;margin-bottom:8px;">Toll-Free | 24 Hours x 7 Days Support</p>
+      <p style="font-size:11px;color:#A0B3C6;">Department of Information Technology,<br>Mantralaya, Mumbai - 400 032</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Government of Maharashtra. All rights reserved. Developed by <strong>Team ERRORISTS</strong>.</div>
+  </div>
+</footer>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/auth.js"></script>
+<script>
+async function loadDashboard() {
+  if (!auth.requireCitizen()) return;
+
+  // Load profile
+  try {
+    const me = await api.get('/api/auth/me');
+    document.getElementById('welcome-title').textContent = `Welcome, ${me.citizen_name}`;
+    document.getElementById('sanyukt-id-display').textContent = `Sanyukt Citizen ID: ${me.sanyukt_id}`;
+    document.getElementById('card-name').textContent = me.citizen_name;
+    document.getElementById('card-sanyukt-id').textContent = me.sanyukt_id;
+    document.getElementById('card-district').textContent = me.district || '-';
+    document.getElementById('card-aadhaar').textContent = me.aadhaar_last4 ? 'XXXX-XXXX-XXXX-' + me.aadhaar_last4 : '-';
+  } catch(e) {}
+
+  // Load applications
+  try {
+    const apps = await api.get('/api/applications');
+    const active = apps.filter(a => ['SUBMITTED','IN_PROGRESS','ON_HOLD'].includes(a.status)).length;
+    const done = apps.filter(a => a.status === 'COMPLETED').length;
+    document.getElementById('stat-active').textContent = active;
+    document.getElementById('stat-completed').textContent = done;
+
+    const el = document.getElementById('recent-apps');
+    if (!apps.length) { 
+      el.innerHTML = '<div style="padding:24px;text-align:center;color:#666;">No active applications found. <a href="/services.html">Apply for a service &rarr;</a></div>'; 
+    } else {
+      const recent = apps.slice(0, 5);
+      el.innerHTML = `<div class="table-responsive"><table class="data-table">
+        <thead><tr><th>Application ID</th><th>Service Name</th><th>Department</th><th>Status</th><th>Submitted On</th><th>Action</th></tr></thead>
+        <tbody>${recent.map(a => `<tr>
+          <td><strong><a href="/application-detail.html?id=${a.application_id}">${a.application_id}</a></strong></td>
+          <td>${a.service}</td>
+          <td>${a.department}</td>
+          <td>${statusBadge(a.status)}</td>
+          <td>${fmtDate(a.created_at)}</td>
+          <td><a href="/application-detail.html?id=${a.application_id}" class="btn btn-outline btn-sm">Inspect / Process</a></td>
+        </tr>`).join('')}</tbody>
+      </table></div>`;
+    }
+  } catch(e) { 
+    document.getElementById('recent-apps').innerHTML = '<div style="padding:16px;color:#C5221F;">Could not load applications.</div>'; 
+  }
+
+  // Load notifications
+  try {
+    const notifs = await api.get('/api/notifications');
+    const unread = notifs.filter(n => !n.is_read).length;
+    document.getElementById('stat-notifs').textContent = unread;
+    const el = document.getElementById('recent-notifs');
+    const recent = notifs.slice(0, 3);
+    if (!recent.length) { 
+      el.innerHTML = '<div style="padding:20px;text-align:center;color:#666;">No recent notifications.</div>'; 
+      return; 
+    }
+    el.innerHTML = recent.map(n => `
+      <div style="padding:12px 16px;border-bottom:1px solid #E5EBF2;display:flex;gap:12px;align-items:flex-start;">
+        <div style="width:8px;height:8px;border-radius:50%;background:${n.is_read ? '#CED4DA' : '#1A73E8'};margin-top:6px;flex-shrink:0;"></div>
+        <div style="flex:1;">
+          <div style="font-weight:700;font-size:13px;color:#0C3866;">${n.title}</div>
+          <div style="font-size:12px;color:#4A5568;margin-top:2px;">${n.message}</div>
+          <div style="font-size:11px;color:#8A9BA8;margin-top:4px;">${fmtDate(n.created_at)}</div>
+        </div>
+      </div>
+    `).join('');
+  } catch(e) {}
+}
+document.addEventListener('DOMContentLoaded', loadDashboard);
+</script>
+</body>
+</html>

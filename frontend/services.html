@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Services Directory | Government of Maharashtra — Sanyukt ID</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <style>
+    .dept-filter-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .dept-chip {
+      padding: 6px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      cursor: pointer;
+      color: var(--text-main);
+      transition: all 0.15s;
+    }
+    .dept-chip:hover, .dept-chip.active {
+      background: var(--primary-navy);
+      color: #FFFFFF;
+      border-color: var(--primary-navy);
+    }
+  </style>
+</head>
+<body>
+
+<div class="gov-tricolor-bar"></div>
+
+<div class="top-utility-bar">
+  <div class="utility-container">
+    <div class="utility-left">
+      <span class="utility-item"><strong>महाराष्ट्र शासन</strong> | Government of Maharashtra</span>
+      <span class="utility-item" style="color:#7D8C9B;">|</span>
+      <span class="utility-item"><span id="live-clock">Loading live time...</span></span>
+    </div>
+    <div class="utility-right">
+      <a href="#main-content" style="color:#495057;font-size:11px;">Skip to Main Content</a>
+      <span>|</span>
+      <button class="utility-btn" onclick="document.body.style.fontSize='13px'">A-</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='14px'">A</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='15px'">A+</button>
+      <span>|</span>
+      <a href="#" class="lang-badge">मराठी</a>
+      <a href="#" class="lang-badge active">English</a>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="header-container">
+    <a href="/index.html" class="brand-group" style="text-decoration:none;">
+      <img src="/static/img/sanyukt.png" alt="Government of Maharashtra — Sanyukt ID" class="brand-logo-img">
+      <div class="brand-titles">
+        <div class="brand-marathi">महाराष्ट्र शासन &nbsp;|&nbsp; Govt. of Maharashtra</div>
+        <div class="brand-main">SANYUKT&middot;ID</div>
+        <div class="brand-sub">Unified Citizen Digital Platform</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="helpline-box">
+        <div class="helpline-label">Toll-Free Citizen Helpline</div>
+        <div class="helpline-num">1800-120-8040</div>
+      </div>
+      <div id="header-user-info" class="header-user-status"></div>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/services.html" class="active">Citizen Services</a></li>
+      <li><a href="/applications.html">Track Application</a></li>
+      <li><a href="/dashboard.html">My Dashboard</a></li>
+      <li><a href="/consent.html">Consent Management</a></li>
+      <li><a href="/notifications.html">Notifications</a></li>
+      <li><a href="/officer-dashboard.html" class="nav-officer-link">Officer Portal</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="page-wrapper" id="main-content">
+  <div class="breadcrumb"><a href="/index.html">Home</a> <span>&rsaquo;</span> Citizen Services Directory</div>
+
+  <div class="flex-between mb-16">
+    <div>
+      <h1 class="page-title">Citizen Services Directory</h1>
+      <div class="text-small text-muted">Browse and apply for 24+ integrated public services across 8 Maharashtra state departments</div>
+    </div>
+  </div>
+
+  <div id="alert-box" class="alert alert-hidden"></div>
+
+  <!-- Search Filter -->
+  <div class="gov-card mb-16">
+    <div class="gov-card-body" style="padding:12px 16px;">
+      <div style="display:flex;gap:12px;align-items:center;">
+        <input type="text" id="service-search-input" class="form-control" placeholder="Search by service name, keyword, or required department..." oninput="filterServices()">
+        <button class="btn btn-secondary btn-sm" onclick="resetSearch()">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Department Filter Chips -->
+  <div class="dept-filter-chips" id="filter-chips">
+    <button class="dept-chip active" onclick="setDeptFilter('ALL', this)">All Departments (24+)</button>
+    <button class="dept-chip" onclick="setDeptFilter('REVENUE', this)">Revenue & Forest</button>
+    <button class="dept-chip" onclick="setDeptFilter('MUNICIPAL', this)">Urban Development</button>
+    <button class="dept-chip" onclick="setDeptFilter('WELFARE', this)">Social Justice</button>
+    <button class="dept-chip" onclick="setDeptFilter('RURAL', this)">Rural Development</button>
+    <button class="dept-chip" onclick="setDeptFilter('HEALTH', this)">Public Health</button>
+    <button class="dept-chip" onclick="setDeptFilter('AGRICULTURE', this)">Agriculture & Farmers</button>
+    <button class="dept-chip" onclick="setDeptFilter('LABOUR', this)">Labour & Employment</button>
+    <button class="dept-chip" onclick="setDeptFilter('HIGHER_ED', this)">Higher Education</button>
+  </div>
+
+  <div id="services-container">
+    <div style="text-align:center;padding:40px;color:var(--text-muted);">Loading services catalog...</div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h4>Government of Maharashtra</h4>
+      <ul>
+        <li><a href="/index.html">State Portal Home</a></li>
+        <li><a href="/services.html">Citizen Services Directory</a></li>
+        <li><a href="/applications.html">Track Application Status</a></li>
+        <li><a href="/officer-dashboard.html">Administrative Officer Portal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Citizen Services</h4>
+      <ul>
+        <li><a href="/apply.html?service=PROP_CERT">7/12 Land Records (e-Mahabhumi)</a></li>
+        <li><a href="/apply.html?service=PROP_TRANSFER">Online Ferfar & Property Transfer</a></li>
+        <li><a href="/apply.html?service=INCOME_CERT">Tahasildar Income Certificates</a></li>
+        <li><a href="/apply.html?service=BLDG_PERMISSION">Municipal BPAMS Clearances</a></li>
+        <li><a href="/apply.html?service=SCHOLARSHIP">MahaDBT Education Scholarships</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies & Support</h4>
+      <ul>
+        <li><a href="#">Citizen Charter & Service SLAs</a></li>
+        <li><a href="#">Privacy & Data Protection Policy</a></li>
+        <li><a href="#">Hyperlinking Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Grievance Redressal (Aaple Sarkar)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Helpline & Helpdesk</h4>
+      <p style="color:#FFF;font-weight:bold;font-size:15px;margin-bottom:4px;">1800-120-8040</p>
+      <p style="font-size:11px;color:#A0B3C6;margin-bottom:8px;">Toll-Free | 24 Hours x 7 Days Support</p>
+      <p style="font-size:11px;color:#A0B3C6;">Department of Information Technology,<br>Mantralaya, Mumbai - 400 032</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Government of Maharashtra. All rights reserved. Developed by <strong>Team ERRORISTS</strong>.</div>
+  </div>
+</footer>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/auth.js"></script>
+<script>
+let allServices = [];
+let currentDept = 'ALL';
+
+async function loadServices() {
+  const cont = document.getElementById('services-container');
+  try {
+    const data = await api.get('/api/services', false);
+    allServices = data || [];
+
+    // Parse URL query parameter if any
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('q');
+    if (q) {
+      document.getElementById('service-search-input').value = q;
+    }
+    const deptParam = params.get('dept');
+    if (deptParam) {
+      currentDept = deptParam;
+      document.querySelectorAll('.dept-chip').forEach(c => {
+        c.classList.toggle('active', c.getAttribute('onclick') && c.getAttribute('onclick').includes(`'${deptParam}'`));
+      });
+    }
+
+    renderServices();
+  } catch (err) {
+    cont.innerHTML = `<div class="alert alert-error">Failed to load services: ${err.message}</div>`;
+  }
+}
+
+function setDeptFilter(deptCode, btn) {
+  currentDept = deptCode;
+  document.querySelectorAll('.dept-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderServices();
+}
+
+function filterServices() {
+  renderServices();
+}
+
+function resetSearch() {
+  document.getElementById('service-search-input').value = '';
+  setDeptFilter('ALL', document.querySelector('.dept-chip'));
+}
+
+function renderServices() {
+  const cont = document.getElementById('services-container');
+  const query = document.getElementById('service-search-input').value.toLowerCase().trim();
+
+  // Filter
+  const filtered = allServices.filter(s => {
+    const matchDept = (currentDept === 'ALL') || (s.department_code === currentDept);
+    const matchQuery = !query || 
+      s.name.toLowerCase().includes(query) || 
+      (s.description && s.description.toLowerCase().includes(query)) ||
+      (s.department && s.department.toLowerCase().includes(query));
+    return matchDept && matchQuery;
+  });
+
+  if (filtered.length === 0) {
+    cont.innerHTML = `
+      <div class="gov-card">
+        <div class="gov-card-body" style="text-align:center;padding:40px;color:var(--text-muted);">
+          No services found matching your criteria. Try adjusting search terms or department filter.
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  // Group by department
+  const byDept = {};
+  filtered.forEach(s => {
+    const deptName = s.department || 'General Services';
+    if (!byDept[deptName]) byDept[deptName] = [];
+    byDept[deptName].push(s);
+  });
+
+  let html = '';
+  for (const [dept, list] of Object.entries(byDept)) {
+    html += `
+      <div class="gov-card mb-16">
+        <div class="gov-card-header">
+          <span>${dept}</span>
+          <span class="text-small text-muted">${list.length} Service${list.length === 1 ? '' : 's'}</span>
+        </div>
+        <div class="gov-card-body" style="padding:10px 16px;">
+          ${list.map(s => `
+            <div class="service-item-row">
+              <div style="flex:1;">
+                <div class="service-name">${s.name}</div>
+                <div class="service-desc">${s.description}</div>
+                <div class="service-dept-meta">
+                  Required Department Clearances: <strong>${s.required_departments || 'Direct'}</strong>
+                </div>
+              </div>
+              <div>
+                <a href="/apply.html?service=${s.code}" class="btn btn-primary btn-sm" style="white-space:nowrap;">Apply Online &rarr;</a>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  cont.innerHTML = html;
+}
+
+document.addEventListener('DOMContentLoaded', loadServices);
+</script>
+</body>
+</html>

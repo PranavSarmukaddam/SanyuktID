@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanyukt ID | Government of Maharashtra — Unified Citizen Services Portal</title>
+  <meta name="description" content="Official single-window portal of the Government of Maharashtra providing integrated citizen services across Revenue, Municipal, Social Justice, Rural, Health, and Agriculture departments.">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<!-- Tricolor Top Accent -->
+<div class="gov-tricolor-bar"></div>
+
+<!-- Accessibility & Utility Bar -->
+<div class="top-utility-bar">
+  <div class="utility-container">
+    <div class="utility-left">
+      <span class="utility-item"><strong>महाराष्ट्र शासन</strong> | Government of Maharashtra</span>
+      <span class="utility-item" style="color:#7D8C9B;">|</span>
+      <span class="utility-item"><span id="live-clock">Loading live time...</span></span>
+    </div>
+    <div class="utility-right">
+      <a href="#main-content" style="color:#495057;font-size:11px;">Skip to Main Content</a>
+      <span>|</span>
+      <button class="utility-btn" onclick="document.body.style.fontSize='13px'">A-</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='14px'">A</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='15px'">A+</button>
+      <span>|</span>
+      <a href="#" class="lang-badge">मराठी</a>
+      <a href="#" class="lang-badge active">English</a>
+    </div>
+  </div>
+</div>
+
+<!-- Main Branding Header -->
+<header class="main-header">
+  <div class="header-container">
+    <a href="/index.html" class="brand-group" style="text-decoration:none;">
+      <img src="/static/img/sanyukt.png" alt="Government of Maharashtra — Sanyukt ID" class="brand-logo-img">
+      <div class="brand-titles">
+        <div class="brand-marathi">महाराष्ट्र शासन &nbsp;|&nbsp; Govt. of Maharashtra</div>
+        <div class="brand-main">SANYUKT&middot;ID</div>
+        <div class="brand-sub">Unified Citizen Digital Platform</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="helpline-box">
+        <div class="helpline-label">Toll-Free Citizen Helpline</div>
+        <div class="helpline-num">1800-120-8040</div>
+      </div>
+      <div id="header-user-info" class="header-user-status"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Navigation Bar -->
+<nav class="main-nav">
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li><a href="/index.html" class="active">Home</a></li>
+      <li><a href="/services.html">Citizen Services</a></li>
+      <li><a href="#departments-section">Departments</a></li>
+      <li><a href="/applications.html">Track Application</a></li>
+      <li><a href="#charter-section">Citizen Charter</a></li>
+      <li><a href="/dashboard.html">My Dashboard</a></li>
+      <li><a href="/officer-dashboard.html" class="nav-officer-link">Officer Portal</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- News & Announcements Ticker -->
+<div class="news-ticker-strip">
+  <div class="ticker-container">
+    <span class="ticker-badge">Notice</span>
+    <div class="ticker-content">
+      <strong>Latest Notification:</strong> Integrated 7/12 Land Records, Building Permissions (BPAMS), and Social Welfare Pension linkages are now processed with single-click citizen consent under Maharashtra Public Services Guarantee.
+    </div>
+  </div>
+</div>
+
+<!-- Main Body Content -->
+<main class="page-wrapper" id="main-content">
+
+  <!-- Hero Portal Banner -->
+  <div class="hero-portal-banner">
+    <div class="hero-inner">
+      <div class="hero-badge">Single Window Governance Platform</div>
+      <h1 class="hero-title">One Identity. Connected Public Services.</h1>
+      <p class="hero-desc">
+        Access official services across Maharashtra Revenue, Municipal Corporations, Social Justice, Agriculture, and Health departments through your verified Sanyukt Citizen Identity.
+      </p>
+
+      <!-- Instant Service Search -->
+      <div class="hero-search-box">
+        <input type="text" id="service-search-input" class="hero-search-input" placeholder="Search government services (e.g. 7/12 Extract, Caste Certificate, Domicile, Building Permit)..." onkeyup="handleSearch(event)">
+        <button class="hero-search-btn" onclick="executeSearch()">Search Service</button>
+      </div>
+
+      <div class="hero-quick-tags">
+        <span>Popular Services:</span>
+        <a href="/apply.html?service=PROP_CERT" class="hero-tag">7/12 Extract</a>
+        <a href="/apply.html?service=PROP_TRANSFER" class="hero-tag">Property Transfer (Ferfar)</a>
+        <a href="/apply.html?service=INCOME_CERT" class="hero-tag">Income Certificate</a>
+        <a href="/apply.html?service=DOMICILE_CERT" class="hero-tag">Domicile Certificate</a>
+        <a href="/apply.html?service=BLDG_PERMISSION" class="hero-tag">Building Approval</a>
+        <a href="/apply.html?service=SCHOLARSHIP" class="hero-tag">MahaDBT Scholarship</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Key Statistics Counter -->
+  <div class="stats-counter-strip">
+    <div class="stat-counter-card">
+      <div class="stat-counter-number">1,42,85,920+</div>
+      <div class="stat-counter-label">Verified Sanyukt IDs</div>
+    </div>
+    <div class="stat-counter-card">
+      <div class="stat-counter-number">8 Major</div>
+      <div class="stat-counter-label">Connected Departments</div>
+    </div>
+    <div class="stat-counter-card">
+      <div class="stat-counter-number">24+ Services</div>
+      <div class="stat-counter-label">Online G2C Services</div>
+    </div>
+    <div class="stat-counter-card">
+      <div class="stat-counter-number">99.4%</div>
+      <div class="stat-counter-label">On-Time SLA Delivery</div>
+    </div>
+  </div>
+
+  <!-- Quick Action & Application Tracker Row -->
+  <div class="row mb-16">
+    <div class="col-8">
+      <div class="gov-card" style="height:100%;">
+        <div class="gov-card-header">
+          <span>Featured Citizen Services</span>
+          <a href="/services.html" class="text-small">View All 24+ Services &rarr;</a>
+        </div>
+        <div class="gov-card-body">
+          <div id="featured-services-list">
+            <div class="service-item-row">
+              <div>
+                <div class="service-name">Digitally Signed 7/12 & 8A Extract</div>
+                <div class="service-desc">Download authentic digitally signed Record of Rights (RoR) verified by Revenue Department.</div>
+                <div class="service-dept-meta">Revenue & Forest Department | Delivery SLA: Immediate (Digital)</div>
+              </div>
+              <a href="/apply.html?service=PROP_CERT" class="btn btn-primary btn-sm">Apply Online</a>
+            </div>
+
+            <div class="service-item-row">
+              <div>
+                <div class="service-name">Property Transfer & Online Mutation (Ferfar)</div>
+                <div class="service-desc">Integrated cross-department property transfer between Revenue Land Registry and Urban Municipal bodies.</div>
+                <div class="service-dept-meta">Revenue & Urban Development | Delivery SLA: 7 Working Days</div>
+              </div>
+              <a href="/apply.html?service=PROP_TRANSFER" class="btn btn-primary btn-sm">Apply Online</a>
+            </div>
+
+            <div class="service-item-row">
+              <div>
+                <div class="service-name">Age, Nationality & Domicile Certificate</div>
+                <div class="service-desc">Certified state residency certificate issued by Sub-Divisional Officer (SDO) / Tahasildar.</div>
+                <div class="service-dept-meta">Revenue & Forest Department | Delivery SLA: 5 Working Days</div>
+              </div>
+              <a href="/apply.html?service=DOMICILE_CERT" class="btn btn-primary btn-sm">Apply Online</a>
+            </div>
+
+            <div class="service-item-row">
+              <div>
+                <div class="service-name">Integrated Building Plan Approval (BPAMS)</div>
+                <div class="service-desc">Single-window building permit clearance, zone verification, and municipal fire/structural NOC.</div>
+                <div class="service-dept-meta">Urban Development & Municipal Administration | Delivery SLA: 14 Working Days</div>
+              </div>
+              <a href="/apply.html?service=BLDG_PERMISSION" class="btn btn-primary btn-sm">Apply Online</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Tracker & Officer Access -->
+    <div class="col-4">
+      <!-- Quick Application Tracker Box -->
+      <div class="gov-card mb-16">
+        <div class="gov-card-header">
+          <span>Track Application Status</span>
+        </div>
+        <div class="gov-card-body">
+          <p class="text-small text-muted mb-16">Enter your 12-digit Application Reference ID to check live verification status across departments:</p>
+          <div class="form-group">
+            <input type="text" id="track-app-input" class="form-control" placeholder="e.g. SYN-2026-001">
+          </div>
+          <button class="btn btn-accent btn-sm" style="width:100%;" onclick="trackApplication()">Track Status</button>
+        </div>
+      </div>
+
+      <!-- Citizen Services Quick Card -->
+      <div class="gov-card">
+        <div class="gov-card-header">
+          <span>Citizen Portal Access</span>
+        </div>
+        <div class="gov-card-body" style="display:flex;flex-direction:column;gap:10px;">
+          <a href="/login.html" class="btn btn-primary" style="display:block;text-align:center;">Citizen Login</a>
+          <a href="/register.html" class="btn btn-outline" style="display:block;text-align:center;">Register New Sanyukt ID</a>
+          <a href="/services.html" class="btn btn-outline" style="display:block;text-align:center;">Explore All 24+ Services</a>
+          <div style="border-top:1px solid #E5EBF2;margin-top:4px;padding-top:10px;">
+            <a href="/login.html?role=officer" class="btn btn-secondary" style="display:block;text-align:center;font-size:12px;">Officer Portal Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Participating Government Departments -->
+  <div id="departments-section" class="mb-16">
+    <div class="flex-between mb-16">
+      <div>
+        <h2 class="page-title">Integrated State Departments</h2>
+        <div class="text-small text-muted">Eight primary departments interoperating via unified Sanyukt APIs</div>
+      </div>
+      <a href="/services.html" class="btn btn-outline btn-sm">View Department Directory</a>
+    </div>
+
+    <div class="dept-grid">
+      <div class="dept-card">
+        <div>
+          <span class="dept-code-tag">महसूल विभाग</span>
+          <div class="dept-card-title">Revenue & Forest Department</div>
+          <div class="dept-card-desc">7/12 Land Records, Property Ferfar, Tahsil Income, Domicile, and Caste Certificate verification.</div>
+        </div>
+        <a href="/services.html?dept=REVENUE" class="btn btn-outline btn-sm">6 Services &rarr;</a>
+      </div>
+
+      <div class="dept-card">
+        <div>
+          <span class="dept-code-tag">नगर विकास</span>
+          <div class="dept-card-title">Urban Development & Municipal Administration</div>
+          <div class="dept-card-desc">Building permissions (BPAMS), water connections, trade licenses, property tax assessments.</div>
+        </div>
+        <a href="/services.html?dept=MUNICIPAL" class="btn btn-outline btn-sm">5 Services &rarr;</a>
+      </div>
+
+      <div class="dept-card">
+        <div>
+          <span class="dept-code-tag">सामाजिक न्याय</span>
+          <div class="dept-card-title">Social Justice & Special Assistance</div>
+          <div class="dept-card-desc">MahaDBT post-matric scholarships, Sanjay Gandhi Niradhar Yojana, and old-age social pensions.</div>
+        </div>
+        <a href="/services.html?dept=WELFARE" class="btn btn-outline btn-sm">4 Services &rarr;</a>
+      </div>
+
+      <div class="dept-card">
+        <div>
+          <span class="dept-code-tag">ग्राम विकास</span>
+          <div class="dept-card-title">Rural Development & Panchayati Raj</div>
+          <div class="dept-card-desc">Gram Panchayat Namuna 8 assessments, village NOCs, and Jal Jeevan Mission rural connections.</div>
+        </div>
+        <a href="/services.html?dept=RURAL" class="btn btn-outline btn-sm">2 Services &rarr;</a>
+      </div>
+
+      <div class="dept-card">
+        <div>
+          <span class="dept-code-tag">आरोग्य विभाग</span>
+          <div class="dept-card-title">Public Health & Family Welfare</div>
+          <div class="dept-card-desc">Mahatma Jyotirao Phule Jan Arogya Yojana (MJPJAY) cards, Food safety and establishment clearances.</div>
+        </div>
+        <a href="/services.html?dept=HEALTH" class="btn btn-outline btn-sm">2 Services &rarr;</a>
+      </div>
+
+      <div class="dept-card">
+        <div>
+          <span class="dept-code-tag">कृषी विभाग</span>
+          <div class="dept-card-title">Agriculture & Farmers Welfare</div>
+          <div class="dept-card-desc">MahaDBT Krishi farm equipment subsidies, micro-irrigation schemes, and Soil Health Cards.</div>
+        </div>
+        <a href="/services.html?dept=AGRICULTURE" class="btn btn-outline btn-sm">2 Services &rarr;</a>
+      </div>
+
+      <div class="dept-card">
+        <div>
+          <span class="dept-code-tag">कामगार विभाग</span>
+          <div class="dept-card-title">Labour & Employment Department</div>
+          <div class="dept-card-desc">BOCW construction worker smart cards, statutory insurance, and Shop Act (Gumasta) licenses.</div>
+        </div>
+        <a href="/services.html?dept=LABOUR" class="btn btn-outline btn-sm">2 Services &rarr;</a>
+      </div>
+
+      <div class="dept-card">
+        <div>
+          <span class="dept-code-tag">उच्च शिक्षण</span>
+          <div class="dept-card-title">Higher & Technical Education</div>
+          <div class="dept-card-desc">Chhatrapati Shahu Maharaj tuition fee concessions, higher education allowances, and course grants.</div>
+        </div>
+        <a href="/services.html?dept=HIGHER_ED" class="btn btn-outline btn-sm">1 Service &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Citizen Charter & Public Services Act Commitment -->
+  <div id="charter-section" class="gov-card">
+    <div class="gov-card-header">
+      <span>Maharashtra Right to Public Services Act (महाराष्ट्र लोकसेवा हक्क अधिनियम)</span>
+    </div>
+    <div class="gov-card-body">
+      <div class="row">
+        <div class="col-8">
+          <p style="margin-bottom:10px;">The Government of Maharashtra is committed to delivering public services to citizens in a transparent, speedy, and time-bound manner under the Maharashtra Right to Public Services Act, 2015.</p>
+          <p style="color:var(--text-muted);font-size:13px;">Through the Sanyukt ID system, all inter-departmental clearances are automated via standardized secure APIs. Citizens no longer need to physically visit multiple district offices to verify records or submit repeat documentation.</p>
+        </div>
+        <div class="col-4" style="border-left:1px solid #E5EBF2;">
+          <div style="font-weight:700;color:var(--primary-navy);margin-bottom:6px;">Citizen Rights:</div>
+          <ul style="padding-left:18px;font-size:12px;color:#4A5568;line-height:1.7;">
+            <li>Zero repetitive paperwork</li>
+            <li>Explicit data-sharing consent control</li>
+            <li>Real-time application progress tracking</li>
+            <li>Statutory delivery within declared SLA</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Official Maharashtra Government Footer -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h4>Government of Maharashtra</h4>
+      <ul>
+        <li><a href="/index.html">State Portal Home</a></li>
+        <li><a href="/services.html">Citizen Services Directory</a></li>
+        <li><a href="/applications.html">Track Application Status</a></li>
+        <li><a href="/officer-dashboard.html">Administrative Officer Portal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Citizen Services</h4>
+      <ul>
+        <li><a href="/apply.html?service=PROP_CERT">7/12 Land Records (e-Mahabhumi)</a></li>
+        <li><a href="/apply.html?service=PROP_TRANSFER">Online Ferfar & Property Transfer</a></li>
+        <li><a href="/apply.html?service=INCOME_CERT">Tahasildar Income Certificates</a></li>
+        <li><a href="/apply.html?service=BLDG_PERMISSION">Municipal BPAMS Clearances</a></li>
+        <li><a href="/apply.html?service=SCHOLARSHIP">MahaDBT Education Scholarships</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies & Support</h4>
+      <ul>
+        <li><a href="#">Citizen Charter & Service SLAs</a></li>
+        <li><a href="#">Privacy & Data Protection Policy</a></li>
+        <li><a href="#">Hyperlinking Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Grievance Redressal (Aaple Sarkar)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Helpline & Helpdesk</h4>
+      <p style="color:#FFF;font-weight:bold;font-size:15px;margin-bottom:4px;">1800-120-8040</p>
+      <p style="font-size:11px;color:#A0B3C6;margin-bottom:8px;">Toll-Free | 24 Hours x 7 Days Support</p>
+      <p style="font-size:11px;color:#A0B3C6;">Department of Information Technology,<br>Mantralaya, Mumbai - 400 032</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Government of Maharashtra. All rights reserved. Developed by <strong>Team ERRORISTS</strong>.</div>
+  </div>
+</footer>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/auth.js"></script>
+<script>
+function handleSearch(e) {
+  if (e.key === 'Enter') executeSearch();
+}
+
+function executeSearch() {
+  const query = document.getElementById('service-search-input').value.trim();
+  if (query) {
+    window.location.href = `/services.html?q=${encodeURIComponent(query)}`;
+  } else {
+    window.location.href = '/services.html';
+  }
+}
+
+function trackApplication() {
+  const appId = document.getElementById('track-app-input').value.trim();
+  if (!appId) {
+    alert('Please enter an Application ID (e.g. SYN-2026-001)');
+    return;
+  }
+  window.location.href = `/application-detail.html?id=${encodeURIComponent(appId)}`;
+}
+</script>
+</body>
+</html>

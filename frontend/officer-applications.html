@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Applications — Sanyukt ID | Officer Portal</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<!-- Tricolor Top Accent -->
+<div class="gov-tricolor-bar"></div>
+
+<!-- Accessibility & Utility Bar -->
+<div class="top-utility-bar">
+  <div class="utility-container">
+    <div class="utility-left">
+      <span class="utility-item"><strong>महाराष्ट्र शासन</strong> | Government of Maharashtra — Administrative Officer Portal</span>
+      <span class="utility-item" style="color:#7D8C9B;">|</span>
+      <span class="utility-item"><span id="live-clock">Loading live time...</span></span>
+    </div>
+    <div class="utility-right">
+      <a href="#main-content" style="color:#495057;font-size:11px;">Skip to Main Content</a>
+      <span>|</span>
+      <button class="utility-btn" onclick="document.body.style.fontSize='13px'">A-</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='14px'">A</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='15px'">A+</button>
+      <span>|</span>
+      <a href="#" class="lang-badge">मराठी</a>
+      <a href="#" class="lang-badge active">English</a>
+    </div>
+  </div>
+</div>
+
+<!-- Main Branding Header -->
+<header class="main-header">
+  <div class="header-container">
+    <a href="/officer-dashboard.html" class="brand-group" style="text-decoration:none;">
+      <img src="/static/img/sanyukt.png" alt="Government of Maharashtra — Sanyukt ID" class="brand-logo-img">
+      <div class="brand-titles">
+        <div class="brand-marathi">महाराष्ट्र शासन &nbsp;|&nbsp; Govt. of Maharashtra</div>
+        <div class="brand-main">SANYUKT&middot;ID</div>
+        <div class="brand-sub">Unified Citizen Digital Platform</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="helpline-box">
+        <div class="helpline-label">Internal Support Desk</div>
+        <div class="helpline-num">022-2202-5000</div>
+      </div>
+      <div id="header-user-info" class="header-user-status"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Navigation Bar -->
+<nav class="main-nav">
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li><a href="/officer-dashboard.html">Officer Dashboard</a></li>
+      <li><a href="/officer-applications.html">All Applications</a></li>
+      <li><a href="/audit-logs.html">System Audit Logs</a></li>
+      <li><a href="/index.html" class="nav-officer-link">Citizen State Portal</a></li>
+    </ul>
+  </div>
+</nav>
+</header>
+
+
+<main class="page-wrapper" id="main-content">
+  <div class="breadcrumb"><a href="/officer-dashboard.html">Officer Portal</a> <span>&rsaquo;</span> All Applications</div>
+  
+  <div class="flex-between mb-16">
+    <div>
+      <div class="page-title" style="border:none;margin:0;padding:0;">All Citizen Applications</div>
+      <div class="text-small text-muted">Review, inspect and monitor cross-department service workflows</div>
+    </div>
+    <div>
+      <button class="btn btn-outline btn-sm" onclick="loadApplications()">&#8635; Refresh List</button>
+    </div>
+  </div>
+
+  <div id="alert-box" class="alert alert-hidden"></div>
+
+  <!-- Filters -->
+  <div class="card mb-16">
+    <div class="card-body" style="padding:12px 16px;">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <div style="flex:1;min-width:200px;">
+          <input type="text" id="filter-search" class="form-control" placeholder="Search by App ID or Citizen Name..." oninput="filterTable()">
+        </div>
+        <div style="width:160px;">
+          <select id="filter-status" class="form-control" onchange="filterTable()">
+            <option value="">All Statuses</option>
+            <option value="SUBMITTED">Submitted</option>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="ON_HOLD">On Hold</option>
+            <option value="COMPLETED">Completed</option>
+            <option value="FAILED">Failed</option>
+          </select>
+        </div>
+        <div style="width:180px;">
+          <select id="filter-dept" class="form-control" onchange="filterTable()">
+            <option value="">All Departments</option>
+            <option value="Revenue">Revenue</option>
+            <option value="Municipal">Municipal</option>
+            <option value="Welfare">Welfare</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary btn-sm" onclick="resetFilters()">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Applications Table -->
+  <div class="card">
+    <div class="card-header flex-between">
+      <span>Applications List</span>
+      <span class="text-small text-muted" id="count-display">0 applications found</span>
+    </div>
+    <div class="card-body" style="padding:0;">
+      <div class="table-responsive">
+        <table class="data-table" id="apps-table">
+          <thead>
+            <tr>
+              <th>Application ID</th>
+              <th>Citizen Name</th>
+              <th>Sanyukt ID</th>
+              <th>Service</th>
+              <th>Department</th>
+              <th>Status</th>
+              <th>Submitted Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="apps-tbody">
+            <tr><td colspan="8" class="loading" style="text-align:center;">Loading applications...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h4>Government of Maharashtra</h4>
+      <ul>
+        <li><a href="/index.html">State Portal Home</a></li>
+        <li><a href="/services.html">Citizen Services Directory</a></li>
+        <li><a href="/applications.html">Track Application Status</a></li>
+        <li><a href="/officer-dashboard.html">Administrative Officer Portal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Citizen Services</h4>
+      <ul>
+        <li><a href="/apply.html?service=PROP_CERT">7/12 Land Records (e-Mahabhumi)</a></li>
+        <li><a href="/apply.html?service=PROP_TRANSFER">Online Ferfar & Property Transfer</a></li>
+        <li><a href="/apply.html?service=INCOME_CERT">Tahasildar Income Certificates</a></li>
+        <li><a href="/apply.html?service=BLDG_PERMISSION">Municipal BPAMS Clearances</a></li>
+        <li><a href="/apply.html?service=SCHOLARSHIP">MahaDBT Education Scholarships</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies & Support</h4>
+      <ul>
+        <li><a href="#">Citizen Charter & Service SLAs</a></li>
+        <li><a href="#">Privacy & Data Protection Policy</a></li>
+        <li><a href="#">Hyperlinking Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Grievance Redressal (Aaple Sarkar)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Helpline & Helpdesk</h4>
+      <p style="color:#FFF;font-weight:bold;font-size:15px;margin-bottom:4px;">1800-120-8040</p>
+      <p style="font-size:11px;color:#A0B3C6;margin-bottom:8px;">Toll-Free | 24 Hours x 7 Days Support</p>
+      <p style="font-size:11px;color:#A0B3C6;">Department of Information Technology,<br>Mantralaya, Mumbai - 400 032</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Government of Maharashtra. All rights reserved. Developed by <strong>Team ERRORISTS</strong>.</div>
+  </div>
+</footer>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/auth.js"></script>
+<script>
+let allApplications = [];
+
+async function loadApplications() {
+  if (!auth.requireOfficer()) return;
+  const tbody = document.getElementById('apps-tbody');
+  tbody.innerHTML = '<tr><td colspan="8" class="loading" style="text-align:center;">Loading applications...</td></tr>';
+  
+  try {
+    const data = await api.get('/api/applications');
+    allApplications = data || [];
+    filterTable();
+  } catch (err) {
+    showAlert('alert-box', 'Error loading applications: ' + err.message, 'error');
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;color:#B42318;">Failed to load applications.</td></tr>';
+  }
+}
+
+function filterTable() {
+  const search = document.getElementById('filter-search').value.toLowerCase().trim();
+  const status = document.getElementById('filter-status').value;
+  const dept = document.getElementById('filter-dept').value.toLowerCase();
+
+  const filtered = allApplications.filter(a => {
+    const matchSearch = !search || 
+      (a.application_id && a.application_id.toLowerCase().includes(search)) ||
+      (a.citizen_name && a.citizen_name.toLowerCase().includes(search)) ||
+      (a.sanyukt_id && a.sanyukt_id.toLowerCase().includes(search));
+    const matchStatus = !status || a.status === status;
+    const matchDept = !dept || (a.department && a.department.toLowerCase().includes(dept));
+    return matchSearch && matchStatus && matchDept;
+  });
+
+  renderTable(filtered);
+}
+
+function renderTable(apps) {
+  const tbody = document.getElementById('apps-tbody');
+  document.getElementById('count-display').textContent = `${apps.length} application${apps.length === 1 ? '' : 's'} found`;
+
+  if (apps.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:24px;color:#666;">No applications match the filter criteria.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = apps.map(a => `
+    <tr>
+      <td><strong><a href="/application-detail.html?id=${a.application_id}">${a.application_id}</a></strong></td>
+      <td>${a.citizen_name || '—'}</td>
+      <td><span style="font-family:monospace;font-size:12px;">${a.sanyukt_id || '—'}</span></td>
+      <td>${a.service || '—'}</td>
+      <td>${a.department || '—'}</td>
+      <td>${statusBadge(a.status)}</td>
+      <td>${fmtDate(a.created_at)}</td>
+      <td>
+        <a href="/application-detail.html?id=${a.application_id}" class="btn btn-primary btn-sm">Inspect / Process</a>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function resetFilters() {
+  document.getElementById('filter-search').value = '';
+  document.getElementById('filter-status').value = '';
+  document.getElementById('filter-dept').value = '';
+  filterTable();
+}
+
+document.addEventListener('DOMContentLoaded', loadApplications);
+</script>
+</body>
+</html>

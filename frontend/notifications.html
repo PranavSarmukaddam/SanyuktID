@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications — Sanyukt ID | Government of Maharashtra</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<!-- Tricolor Top Accent -->
+<div class="gov-tricolor-bar"></div>
+
+<!-- Accessibility & Utility Bar -->
+<div class="top-utility-bar">
+  <div class="utility-container">
+    <div class="utility-left">
+      <span class="utility-item"><strong>महाराष्ट्र शासन</strong> | Government of Maharashtra</span>
+      <span class="utility-item" style="color:#7D8C9B;">|</span>
+      <span class="utility-item"><span id="live-clock">Loading live time...</span></span>
+    </div>
+    <div class="utility-right">
+      <a href="#main-content" style="color:#495057;font-size:11px;">Skip to Main Content</a>
+      <span>|</span>
+      <button class="utility-btn" onclick="document.body.style.fontSize='13px'">A-</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='14px'">A</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='15px'">A+</button>
+      <span>|</span>
+      <a href="#" class="lang-badge">मराठी</a>
+      <a href="#" class="lang-badge active">English</a>
+    </div>
+  </div>
+</div>
+
+<!-- Main Branding Header -->
+<header class="main-header">
+  <div class="header-container">
+    <a href="/index.html" class="brand-group" style="text-decoration:none;">
+      <img src="/static/img/sanyukt.png" alt="Government of Maharashtra — Sanyukt ID" class="brand-logo-img">
+      <div class="brand-titles">
+        <div class="brand-marathi">महाराष्ट्र शासन &nbsp;|&nbsp; Govt. of Maharashtra</div>
+        <div class="brand-main">SANYUKT&middot;ID</div>
+        <div class="brand-sub">Unified Citizen Digital Platform</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="helpline-box">
+        <div class="helpline-label">Toll-Free Citizen Helpline</div>
+        <div class="helpline-num">1800-120-8040</div>
+      </div>
+      <div id="header-user-info" class="header-user-status"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Navigation Bar -->
+<nav class="main-nav">
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/services.html">Citizen Services</a></li>
+      <li><a href="/applications.html">Track Applications</a></li>
+      <li><a href="/dashboard.html">Dashboard</a></li>
+      <li><a href="/consent.html">Consent</a></li>
+      <li><a href="/notifications.html">Notifications</a></li>
+      <li><a href="/profile.html">Profile</a></li>
+      <li><a href="/officer-dashboard.html" class="nav-officer-link">Officer Portal</a></li>
+    </ul>
+  </div>
+</nav>
+</header>
+
+
+<main class="page-wrapper" id="main-content">
+  <div class="breadcrumb"><a href="/index.html">Home</a> <span>&rsaquo;</span> Notifications</div>
+  <div class="flex-between mb-16">
+    <div class="page-title" style="border:none;margin:0;padding:0;">Notifications</div>
+    <button class="btn btn-outline btn-sm" onclick="markAllRead()">Mark All as Read</button>
+  </div>
+  <div id="alert-box" class="alert alert-hidden"></div>
+  <div class="card">
+    <div id="notifs-container"><div class="loading">Loading notifications...</div></div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h4>Government of Maharashtra</h4>
+      <ul>
+        <li><a href="/index.html">State Portal Home</a></li>
+        <li><a href="/services.html">Citizen Services Directory</a></li>
+        <li><a href="/applications.html">Track Application Status</a></li>
+        <li><a href="/officer-dashboard.html">Administrative Officer Portal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Citizen Services</h4>
+      <ul>
+        <li><a href="/apply.html?service=PROP_CERT">7/12 Land Records (e-Mahabhumi)</a></li>
+        <li><a href="/apply.html?service=PROP_TRANSFER">Online Ferfar & Property Transfer</a></li>
+        <li><a href="/apply.html?service=INCOME_CERT">Tahasildar Income Certificates</a></li>
+        <li><a href="/apply.html?service=BLDG_PERMISSION">Municipal BPAMS Clearances</a></li>
+        <li><a href="/apply.html?service=SCHOLARSHIP">MahaDBT Education Scholarships</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies & Support</h4>
+      <ul>
+        <li><a href="#">Citizen Charter & Service SLAs</a></li>
+        <li><a href="#">Privacy & Data Protection Policy</a></li>
+        <li><a href="#">Hyperlinking Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Grievance Redressal (Aaple Sarkar)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Helpline & Helpdesk</h4>
+      <p style="color:#FFF;font-weight:bold;font-size:15px;margin-bottom:4px;">1800-120-8040</p>
+      <p style="font-size:11px;color:#A0B3C6;margin-bottom:8px;">Toll-Free | 24 Hours x 7 Days Support</p>
+      <p style="font-size:11px;color:#A0B3C6;">Department of Information Technology,<br>Mantralaya, Mumbai - 400 032</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Government of Maharashtra. All rights reserved. Developed by <strong>Team ERRORISTS</strong>.</div>
+  </div>
+</footer>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/auth.js"></script>
+<script>
+async function loadNotifs() {
+  if (!auth.requireCitizen()) return;
+  try {
+    const notifs = await api.get('/api/notifications');
+    const cont = document.getElementById('notifs-container');
+    if (!notifs.length) {
+      cont.innerHTML = '<div style="padding:24px;text-align:center;color:#666;">No notifications.</div>';
+      return;
+    }
+    cont.innerHTML = notifs.map(n => `
+      <div class="notif-item ${n.is_read ? '' : 'unread'}" id="notif-${n.id}">
+        <div class="${n.is_read ? 'notif-read-dot' : 'notif-dot'}"></div>
+        <div style="flex:1;">
+          <div class="notif-title">${n.title}</div>
+          <div class="notif-msg">${n.message}</div>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:4px;">
+            <div class="notif-time">${fmtDate(n.created_at)}</div>
+            ${n.application_id ? `<a href="/application-detail.html?id=${n.application_id}" class="text-small">View Application</a>` : ''}
+            ${!n.is_read ? `<button class="btn btn-outline btn-sm" onclick="markRead(${n.id}, this)">Mark as Read</button>` : ''}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  } catch(e) {
+    document.getElementById('notifs-container').innerHTML = `<div class="alert alert-error" style="margin:16px;">${e.message}</div>`;
+  }
+}
+
+async function markRead(id, btn) {
+  btn.disabled = true;
+  await api.post(`/api/notifications/${id}/read`, {});
+  loadNotifs();
+}
+
+async function markAllRead() {
+  await api.post('/api/notifications/mark-all-read', {});
+  showAlert('alert-box', 'All notifications marked as read.', 'success');
+  loadNotifs();
+}
+
+document.addEventListener('DOMContentLoaded', loadNotifs);
+</script>
+</body>
+</html>

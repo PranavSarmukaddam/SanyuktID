@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apply for Service — Sanyukt ID | Government of Maharashtra</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="gov-tricolor-bar"></div>
+
+<div class="top-utility-bar">
+  <div class="utility-container">
+    <div class="utility-left">
+      <span class="utility-item"><strong>महाराष्ट्र शासन</strong> | Government of Maharashtra</span>
+      <span class="utility-item" style="color:#7D8C9B;">|</span>
+      <span class="utility-item"><span id="live-clock">Loading live time...</span></span>
+    </div>
+    <div class="utility-right">
+      <a href="#main-content" style="color:#495057;font-size:11px;">Skip to Main Content</a>
+      <span>|</span>
+      <button class="utility-btn" onclick="document.body.style.fontSize='13px'">A-</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='14px'">A</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='15px'">A+</button>
+      <span>|</span>
+      <a href="#" class="lang-badge">मराठी</a>
+      <a href="#" class="lang-badge active">English</a>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="header-container">
+    <a href="/index.html" class="brand-group" style="text-decoration:none;">
+      <img src="/static/img/sanyukt.png" alt="Government of Maharashtra — Sanyukt ID" class="brand-logo-img">
+      <div class="brand-titles">
+        <div class="brand-marathi">महाराष्ट्र शासन &nbsp;|&nbsp; Govt. of Maharashtra</div>
+        <div class="brand-main">SANYUKT&middot;ID</div>
+        <div class="brand-sub">Unified Citizen Digital Platform</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="helpline-box">
+        <div class="helpline-label">Toll-Free Citizen Helpline</div>
+        <div class="helpline-num">1800-120-8040</div>
+      </div>
+      <div id="header-user-info" class="header-user-status"></div>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/services.html" class="active">Citizen Services</a></li>
+      <li><a href="/applications.html">My Applications</a></li>
+      <li><a href="/dashboard.html">My Dashboard</a></li>
+      <li><a href="/consent.html">Consent Management</a></li>
+      <li><a href="/notifications.html">Notifications</a></li>
+      <li><a href="/profile.html">Profile</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="page-wrapper" id="main-content">
+  <div class="breadcrumb"><a href="/index.html">Home</a> <span>&rsaquo;</span> <a href="/services.html">Citizen Services</a> <span>&rsaquo;</span> Online Application</div>
+  <h1 class="page-title" id="page-title">Service Application Form</h1>
+
+  <div id="alert-box" class="alert alert-hidden"></div>
+
+  <div class="row">
+    <div class="col-8">
+      <!-- Step 1: Service Info & Citizen Info -->
+      <div class="card" id="step1-card">
+        <div class="card-header" id="service-name-header">Service Details</div>
+        <div class="card-body">
+          <div id="service-info">
+            <div class="loading">Loading service information...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Consent -->
+      <div class="card" id="step2-card">
+        <div class="card-header">Step 2: Grant Consent</div>
+        <div class="card-body">
+          <p class="text-small text-muted" style="margin-bottom:12px;">
+            Sanyukt ID requires your consent before sharing your information with government departments.
+            Please review and grant consent for the departments required for this service.
+          </p>
+          <div id="consent-checkboxes">
+            <div class="loading">Loading departments...</div>
+          </div>
+          <button class="btn btn-primary mt-16" id="grant-consent-btn" onclick="grantAllConsents()" disabled>Grant Consent &amp; Proceed</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Additional Details -->
+      <div class="card" id="step3-card">
+        <div class="card-header">Step 3: Application Details</div>
+        <div class="card-body">
+          <div id="dynamic-form">
+            <div class="loading">Loading form...</div>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:10px;">
+            <button class="btn btn-primary" id="submit-btn" onclick="submitApplication()" disabled>Submit Application</button>
+            <a href="/services.html" class="btn btn-secondary">Cancel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="col-4">
+      <div class="id-card">
+        <div class="id-card-header">
+          <div class="id-card-logo">S</div>
+          <div>
+            <div class="id-card-org">Government of Maharashtra</div>
+            <div class="id-card-title">Sanyukt ID Card</div>
+          </div>
+        </div>
+        <div class="id-field"><div class="id-field-label">Name</div><div class="id-field-value" id="card-name">—</div></div>
+        <div class="id-field"><div class="id-field-label">Sanyukt ID</div><div class="id-sanyukt-num" id="card-sid">—</div></div>
+        <div class="id-field"><div class="id-field-label">Mobile</div><div class="id-field-value" id="card-mobile">—</div></div>
+        <div class="id-field"><div class="id-field-label">District</div><div class="id-field-value" id="card-district">—</div></div>
+      </div>
+
+      <div class="card mt-16">
+        <div class="card-header">How It Works</div>
+        <div class="card-body text-small">
+          <ol style="padding-left:18px;line-height:2;">
+            <li>Verify your identity via Sanyukt ID</li>
+            <li>Grant consent to required departments</li>
+            <li>Submit your application</li>
+            <li>Sanyukt calls each department API</li>
+            <li>Track unified progress in real-time</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h4>Government of Maharashtra</h4>
+      <ul>
+        <li><a href="/index.html">State Portal Home</a></li>
+        <li><a href="/services.html">Citizen Services Directory</a></li>
+        <li><a href="/applications.html">Track Application Status</a></li>
+        <li><a href="/officer-dashboard.html">Administrative Officer Portal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Citizen Services</h4>
+      <ul>
+        <li><a href="/apply.html?service=PROP_CERT">7/12 Land Records (e-Mahabhumi)</a></li>
+        <li><a href="/apply.html?service=PROP_TRANSFER">Online Ferfar & Property Transfer</a></li>
+        <li><a href="/apply.html?service=INCOME_CERT">Tahasildar Income Certificates</a></li>
+        <li><a href="/apply.html?service=BLDG_PERMISSION">Municipal BPAMS Clearances</a></li>
+        <li><a href="/apply.html?service=SCHOLARSHIP">MahaDBT Education Scholarships</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies & Support</h4>
+      <ul>
+        <li><a href="#">Citizen Charter & Service SLAs</a></li>
+        <li><a href="#">Privacy & Data Protection Policy</a></li>
+        <li><a href="#">Hyperlinking Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Grievance Redressal (Aaple Sarkar)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Helpline & Helpdesk</h4>
+      <p style="color:#FFF;font-weight:bold;font-size:15px;margin-bottom:4px;">1800-120-8040</p>
+      <p style="font-size:11px;color:#A0B3C6;margin-bottom:8px;">Toll-Free | 24 Hours x 7 Days Support</p>
+      <p style="font-size:11px;color:#A0B3C6;">Department of Information Technology,<br>Mantralaya, Mumbai - 400 032</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Government of Maharashtra. All rights reserved. Developed by <strong>Team ERRORISTS</strong>.</div>
+  </div>
+</footer>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/auth.js"></script>
+<script>
+let serviceCode = '';
+let serviceData = null;
+let meData = null;
+let consentsDone = false;
+
+const FORMS = {
+  PROP_TRANSFER: `
+    <div class="form-group"><label>Property ID <span class="req">*</span></label><input type="text" id="f_property_id" class="form-control" value="PROP-10291" required></div>
+    <div class="form-group"><label>Buyer Full Name <span class="req">*</span></label><input type="text" id="f_buyer_name" class="form-control" required></div>
+    <div class="form-group"><label>Sale Value (Rs.) <span class="req">*</span></label><input type="number" id="f_sale_value" class="form-control" required></div>
+  `,
+  PROP_CERT: `<div class="form-group"><label>Property ID <span class="req">*</span></label><input type="text" id="f_property_id" class="form-control" value="PROP-10291" required></div>`,
+  INCOME_CERT: `
+    <div class="form-group"><label>Annual Income (Rs.) <span class="req">*</span></label><input type="number" id="f_annual_income" class="form-control" required></div>
+    <div class="form-group"><label>Occupation <span class="req">*</span></label><input type="text" id="f_occupation" class="form-control" required></div>
+  `,
+  DOMICILE_CERT: `<div class="form-group"><label>Years of Residence in Maharashtra <span class="req">*</span></label><input type="number" id="f_years" class="form-control" min="1" required></div>`,
+  BLDG_PERMISSION: `
+    <div class="form-group"><label>Property ID <span class="req">*</span></label><input type="text" id="f_property_id" class="form-control" value="PROP-10291" required></div>
+    <div class="form-group"><label>Building Type</label><select id="f_building_type" class="form-control"><option>Residential</option><option>Commercial</option><option>Industrial</option></select></div>
+    <div class="form-group"><label>Number of Floors <span class="req">*</span></label><input type="number" id="f_floors" class="form-control" min="1" required></div>
+  `,
+  WATER_CONN: `<div class="form-group"><label>Property ID <span class="req">*</span></label><input type="text" id="f_property_id" class="form-control" value="PROP-10291" required></div>`,
+  BIRTH_CERT: `
+    <div class="form-group"><label>Child's Name <span class="req">*</span></label><input type="text" id="f_child_name" class="form-control" required></div>
+    <div class="form-group"><label>Date of Birth <span class="req">*</span></label><input type="date" id="f_dob" class="form-control" required></div>
+    <div class="form-group"><label>Hospital Name</label><input type="text" id="f_hospital" class="form-control"></div>
+  `,
+  SCHOLARSHIP: `
+    <div class="form-group"><label>Educational Institution <span class="req">*</span></label><input type="text" id="f_institution" class="form-control" required></div>
+    <div class="form-group"><label>Course / Class <span class="req">*</span></label><input type="text" id="f_course" class="form-control" required></div>
+    <div class="form-group"><label>Annual Family Income (Rs.) <span class="req">*</span></label><input type="number" id="f_income" class="form-control" required></div>
+  `,
+  WELFARE_SCHEME: `<div class="form-group"><label>Reason for Application <span class="req">*</span></label><textarea id="f_reason" class="form-control" required></textarea></div>`,
+  FIN_ASSISTANCE: `
+    <div class="form-group"><label>Purpose of Assistance <span class="req">*</span></label><input type="text" id="f_purpose" class="form-control" required></div>
+    <div class="form-group"><label>Amount Requested (Rs.) <span class="req">*</span></label><input type="number" id="f_amount" class="form-control" required></div>
+  `,
+};
+
+function getFormData() {
+  const data = {};
+  document.querySelectorAll('#dynamic-form input, #dynamic-form select, #dynamic-form textarea').forEach(el => {
+    if (el.id) data[el.id.replace('f_', '')] = el.value;
+  });
+  return data;
+}
+
+async function loadPage() {
+  if (!auth.requireCitizen()) return;
+  const params = new URLSearchParams(window.location.search);
+  serviceCode = params.get('service') || '';
+
+  // Load citizen info
+  try {
+    meData = await api.get('/api/auth/me');
+    document.getElementById('card-name').textContent = meData.citizen_name;
+    document.getElementById('card-sid').textContent = meData.sanyukt_id;
+    document.getElementById('card-mobile').textContent = meData.mobile;
+    document.getElementById('card-district').textContent = meData.district;
+  } catch(e) {}
+
+  // Load services
+  try {
+    const services = await api.get('/api/services');
+    serviceData = services.find(s => s.code === serviceCode);
+    if (!serviceData) { document.getElementById('service-info').innerHTML = '<div class="alert alert-error">Service not found.</div>'; return; }
+
+    document.getElementById('page-title').textContent = `Apply: ${serviceData.name}`;
+    document.getElementById('service-name-header').textContent = `Step 1: ${serviceData.name}`;
+
+    const depts = (serviceData.required_departments || '').split(',').map(d => d.trim()).filter(Boolean);
+    document.getElementById('service-info').innerHTML = `
+      <div class="row">
+        <div class="col-6"><div class="form-group"><label>Service</label><input type="text" class="form-control" value="${serviceData.name}" readonly></div></div>
+        <div class="col-6"><div class="form-group"><label>Primary Department</label><input type="text" class="form-control" value="${serviceData.department}" readonly></div></div>
+        <div class="col-12"><div class="form-group"><label>Departments Involved</label><input type="text" class="form-control" value="${depts.join(', ')}" readonly></div></div>
+        <div class="col-6"><div class="form-group"><label>Your Name</label><input type="text" class="form-control" value="${meData ? meData.citizen_name : ''}" readonly></div></div>
+        <div class="col-6"><div class="form-group"><label>Sanyukt ID</label><input type="text" class="form-control" value="${meData ? meData.sanyukt_id : ''}" readonly></div></div>
+      </div>
+      <div class="alert alert-info">Identity verified via Sanyukt ID. Please grant consent in Step 2 to proceed.</div>
+    `;
+
+    // Consent checkboxes
+    const consentHtml = depts.map(d => `
+      <div style="margin-bottom:10px;padding:10px;border:1px solid #D9DDE2;border-radius:3px;">
+        <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;">
+          <input type="checkbox" id="consent-${d}" style="margin-top:3px;">
+          <div>
+            <strong>${d} Department</strong><br>
+            <span class="text-small text-muted">I consent to share my identity and relevant data with the ${d} Department for processing this application.</span>
+          </div>
+        </label>
+      </div>
+    `).join('');
+    document.getElementById('consent-checkboxes').innerHTML = consentHtml;
+
+    // Enable consent button when all checked
+    depts.forEach(d => {
+      document.getElementById(`consent-${d}`).addEventListener('change', () => {
+        const allChecked = depts.every(dd => document.getElementById(`consent-${dd}`).checked);
+        document.getElementById('grant-consent-btn').disabled = !allChecked;
+      });
+    });
+
+    // Load dynamic form
+    document.getElementById('dynamic-form').innerHTML = FORMS[serviceCode] || `<div class="form-group"><label>Remarks</label><textarea id="f_remarks" class="form-control"></textarea></div>`;
+
+  } catch(e) {
+    document.getElementById('service-info').innerHTML = `<div class="alert alert-error">Could not load service: ${e.message}</div>`;
+  }
+}
+
+async function grantAllConsents() {
+  const btn = document.getElementById('grant-consent-btn');
+  btn.disabled = true; btn.textContent = 'Granting consent...';
+  const depts = (serviceData.required_departments || '').split(',').map(d => d.trim()).filter(Boolean);
+  const tempAppId = `TEMP-${Date.now()}`;
+  try {
+    for (const dept of depts) {
+      await api.post('/api/consent', { application_id: tempAppId, department_code: dept, data_types: 'identity,documents' });
+    }
+    showAlert('alert-box', 'Consent granted for all required departments. You may now submit the application.', 'success');
+    consentsDone = true;
+    document.getElementById('submit-btn').disabled = false;
+    btn.textContent = 'Consent Granted';
+    btn.className = 'btn btn-success mt-16';
+  } catch(e) {
+    showAlert('alert-box', e.message || 'Consent failed.', 'error');
+    btn.disabled = false; btn.textContent = 'Grant Consent & Proceed';
+  }
+}
+
+async function submitApplication() {
+  if (!consentsDone) { showAlert('alert-box', 'Please grant consent first.', 'warning'); return; }
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true; btn.textContent = 'Submitting...';
+  try {
+    const formData = getFormData();
+    const result = await api.post('/api/applications', { service_code: serviceCode, form_data: formData });
+    showAlert('alert-box', `Application submitted! ID: ${result.application_id}. Redirecting...`, 'success');
+    setTimeout(() => window.location.href = `/application-detail.html?id=${result.application_id}`, 1500);
+  } catch(e) {
+    showAlert('alert-box', e.message || 'Submission failed.', 'error');
+    btn.disabled = false; btn.textContent = 'Submit Application';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadPage);
+</script>
+</body>
+</html>

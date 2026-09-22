@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Applications — Sanyukt ID | Government of Maharashtra</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+<div class="gov-tricolor-bar"></div>
+
+<div class="top-utility-bar">
+  <div class="utility-container">
+    <div class="utility-left">
+      <span class="utility-item"><strong>महाराष्ट्र शासन</strong> | Government of Maharashtra</span>
+      <span class="utility-item" style="color:#7D8C9B;">|</span>
+      <span class="utility-item"><span id="live-clock">Loading live time...</span></span>
+    </div>
+    <div class="utility-right">
+      <a href="#main-content" style="color:#495057;font-size:11px;">Skip to Main Content</a>
+      <span>|</span>
+      <button class="utility-btn" onclick="document.body.style.fontSize='13px'">A-</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='14px'">A</button>
+      <button class="utility-btn" onclick="document.body.style.fontSize='15px'">A+</button>
+      <span>|</span>
+      <a href="#" class="lang-badge">मराठी</a>
+      <a href="#" class="lang-badge active">English</a>
+    </div>
+  </div>
+</div>
+
+<header class="main-header">
+  <div class="header-container">
+    <a href="/index.html" class="brand-group" style="text-decoration:none;">
+      <img src="/static/img/sanyukt.png" alt="Government of Maharashtra — Sanyukt ID" class="brand-logo-img">
+      <div class="brand-titles">
+        <div class="brand-marathi">महाराष्ट्र शासन &nbsp;|&nbsp; Govt. of Maharashtra</div>
+        <div class="brand-main">SANYUKT&middot;ID</div>
+        <div class="brand-sub">Unified Citizen Digital Platform</div>
+      </div>
+    </a>
+    <div class="header-actions">
+      <div class="helpline-box">
+        <div class="helpline-label">Toll-Free Citizen Helpline</div>
+        <div class="helpline-num">1800-120-8040</div>
+      </div>
+      <div id="header-user-info" class="header-user-status"></div>
+    </div>
+  </div>
+</header>
+
+<nav class="main-nav">
+  <div class="nav-container">
+    <ul class="nav-links">
+      <li><a href="/index.html">Home</a></li>
+      <li><a href="/services.html">Citizen Services</a></li>
+      <li><a href="/applications.html" class="active">My Applications</a></li>
+      <li><a href="/dashboard.html">My Dashboard</a></li>
+      <li><a href="/consent.html">Consent Management</a></li>
+      <li><a href="/notifications.html">Notifications</a></li>
+      <li><a href="/profile.html">Profile</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="page-wrapper" id="main-content">
+  <div class="breadcrumb"><a href="/index.html">Home</a> <span>&rsaquo;</span> Track My Applications</div>
+  <div class="flex-between mb-16">
+    <div>
+      <h1 class="page-title">My Service Applications</h1>
+      <div class="text-small text-muted">Track real-time departmental verification, clearances, and certificates</div>
+    </div>
+    <a href="/services.html" class="btn btn-primary">Apply for New Service</a>
+  </div>
+
+  <div id="alert-box" class="alert alert-hidden"></div>
+
+  <div class="gov-card">
+    <div class="gov-card-header">Submitted Application Records</div>
+    <div class="gov-card-body" style="padding:0;">
+      <div id="apps-container"><div style="padding:20px;text-align:center;color:var(--text-muted);">Loading applications...</div></div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-col">
+      <h4>Government of Maharashtra</h4>
+      <ul>
+        <li><a href="/index.html">State Portal Home</a></li>
+        <li><a href="/services.html">Citizen Services Directory</a></li>
+        <li><a href="/applications.html">Track Application Status</a></li>
+        <li><a href="/officer-dashboard.html">Administrative Officer Portal</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Citizen Services</h4>
+      <ul>
+        <li><a href="/apply.html?service=PROP_CERT">7/12 Land Records (e-Mahabhumi)</a></li>
+        <li><a href="/apply.html?service=PROP_TRANSFER">Online Ferfar & Property Transfer</a></li>
+        <li><a href="/apply.html?service=INCOME_CERT">Tahasildar Income Certificates</a></li>
+        <li><a href="/apply.html?service=BLDG_PERMISSION">Municipal BPAMS Clearances</a></li>
+        <li><a href="/apply.html?service=SCHOLARSHIP">MahaDBT Education Scholarships</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Policies & Support</h4>
+      <ul>
+        <li><a href="#">Citizen Charter & Service SLAs</a></li>
+        <li><a href="#">Privacy & Data Protection Policy</a></li>
+        <li><a href="#">Hyperlinking Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Grievance Redressal (Aaple Sarkar)</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Helpline & Helpdesk</h4>
+      <p style="color:#FFF;font-weight:bold;font-size:15px;margin-bottom:4px;">1800-120-8040</p>
+      <p style="font-size:11px;color:#A0B3C6;margin-bottom:8px;">Toll-Free | 24 Hours x 7 Days Support</p>
+      <p style="font-size:11px;color:#A0B3C6;">Department of Information Technology,<br>Mantralaya, Mumbai - 400 032</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Government of Maharashtra. All rights reserved. Developed by <strong>Team ERRORISTS</strong>.</div>
+  </div>
+</footer>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/auth.js"></script>
+<script>
+async function loadApplications() {
+  if (!auth.requireLogin()) return;
+  const cont = document.getElementById('apps-container');
+  try {
+    const apps = await api.get('/api/applications');
+    if (!apps.length) {
+      cont.innerHTML = `<div style="padding:24px;text-align:center;color:#666;">
+        <p>No applications found.</p>
+        <a href="/services.html" class="btn btn-primary mt-16">Apply for a Service</a>
+      </div>`;
+      return;
+    }
+    cont.innerHTML = `<table class="data-table">
+      <thead><tr>
+        <th>Application ID</th>
+        <th>Service</th>
+        <th>Department</th>
+        <th>Status</th>
+        <th>Submitted On</th>
+        <th>Last Updated</th>
+        <th>Action</th>
+      </tr></thead>
+      <tbody>
+        ${apps.map(a => `<tr>
+          <td><a href="/application-detail.html?id=${a.application_id}">${a.application_id}</a></td>
+          <td>${a.service}</td>
+          <td>${a.department}</td>
+          <td>${statusBadge(a.status)}</td>
+          <td>${fmtDate(a.created_at)}</td>
+          <td>${fmtDate(a.updated_at)}</td>
+          <td>
+            <a href="/application-detail.html?id=${a.application_id}" class="btn btn-outline btn-sm">View</a>
+            ${['SUBMITTED','ON_HOLD'].includes(a.status) ? `<button class="btn btn-primary btn-sm" onclick="processApp('${a.application_id}', this)" style="margin-left:4px;">Process</button>` : ''}
+          </td>
+        </tr>`).join('')}
+      </tbody>
+    </table>`;
+  } catch(e) {
+    cont.innerHTML = `<div class="alert alert-error" style="margin:16px;">${e.message}</div>`;
+  }
+}
+
+async function processApp(appId, btn) {
+  btn.disabled = true; btn.textContent = 'Processing...';
+  try {
+    const result = await api.post(`/api/interoperability/process/${appId}`, {});
+    showAlert('alert-box', `Processing: ${result.message}`, result.status === 'COMPLETED' ? 'success' : 'info');
+    loadApplications();
+  } catch(e) {
+    showAlert('alert-box', e.message || 'Processing failed.', 'error');
+    btn.disabled = false; btn.textContent = 'Process';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadApplications);
+</script>
+</body>
+</html>
