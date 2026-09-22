@@ -50,6 +50,13 @@ if os.path.exists(frontend_path):
             return FileResponse(file_path)
         return FileResponse(os.path.join(frontend_path, "index.html"))
 
+    @app.get("/favicon.ico")
+    def favicon():
+        fav_path = os.path.join(frontend_path, "static", "img", "sanyukt.png")
+        if os.path.exists(fav_path):
+            return FileResponse(fav_path)
+        return FileResponse(os.path.join(frontend_path, "index.html"))
+
 
 @app.on_event("startup")
 def startup():
